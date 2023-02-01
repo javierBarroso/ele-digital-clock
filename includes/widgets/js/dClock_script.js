@@ -1,4 +1,5 @@
-function clock3(){
+
+function digital_clock(){
 
     let hours = document.getElementById('hour');
     let minutes = document.getElementById('minute');
@@ -10,7 +11,7 @@ function clock3(){
 
     var am = 'AM';
 
-    if(h>12){
+    if( h > 12 ){
         h = h - 12;
     }
 
@@ -24,4 +25,4 @@ function clock3(){
     seconds.innerHTML = s;
 }
 
-setInterval(clock3, 1000);
+setInterval(digital_clock, 1000);

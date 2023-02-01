@@ -39,7 +39,7 @@ final class Plugin
 			add_action('admin_notices', [$this, 'admin_notice_missing_main_plugin']);
 			return false;
 		}
-
+		
 		if (!version_compare(ELEMENTOR_VERSION, self::MINIMUM_ELEMENTOR_VERSION, '>=')) {
 			add_action('admin_notices', [$this, 'admin_notice_minimum_elementor_version']);
 			return false;

@@ -5,6 +5,10 @@ if (!defined('ABSPATH')) {
 	exit();
 }
 
+if ( ! function_exists( 'get_plugins' ) ) {
+	require_once ABSPATH . 'wp-admin/includes/plugin.php';
+}
+
 final class Plugin
 {
 
@@ -32,10 +36,13 @@ final class Plugin
 	}
 
 
+
 	public function is_compatible()
 	{
+		/* var_dump(in_array( 'elementor/elementor.php', get_option('active_plugins')));
+		var_dump(get_plugins()['elementor/elementor.php']); */
 
-		if (!did_action('elementor/loaded')) {
+		if (!is_plugin_active('elementor/elementor.php')) {
 			add_action('admin_notices', [$this, 'admin_notice_missing_main_plugin']);
 			return false;
 		}

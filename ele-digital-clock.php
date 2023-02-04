@@ -27,6 +27,8 @@ along with Ele Digital Clock. If not, see {URI to Plugin License}.
  * Elementor tested up to: 3.10.2
  */
 
+define( 'MY_PLUGIN_PATH', plugin_dir_path( __DIR__ ) );
+
 if(!defined('ABSPATH')){
     exit();
 }
@@ -37,6 +39,20 @@ function ele_digital_clock(){
 
     Plugin::instance();
 
+    
+
 }
 
 add_action('plugin_loaded', 'ele_digital_clock');
+
+
+function activate_ele_digital_clock(){
+    flush_rewrite_rules(  );
+}
+function deactivate_ele_digital_clock(){
+    flush_rewrite_rules(  );
+}
+
+register_activation_hook( __FILE__, 'activate_ele_digital_clock' );
+
+register_deactivation_hook( __FILE__, 'deactivate_ele_digital_clock' );

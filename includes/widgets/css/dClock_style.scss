@@ -4,13 +4,11 @@
     align-items: center;
     min-height: fit-content;
     *{
-
         font-family:Arial, Helvetica, sans-serif;
     }
     .wn-dclock{
-        justify-content: center;
         h2{
-        position: relative;
+            position: relative;
         display: block;
         text-align: center;
         margin: 10px 0;
@@ -20,30 +18,74 @@
         letter-spacing: 0.4em;
         font-size: 0.8em;
         width: 100%;
-        }
-        #time{
+    }
+    #time{
             display: flex;
             justify-content: center;
-            div{
+            
+            .cell-cont{
+                display: flex;
+                flex-direction: column;
+                justify-content: stretch;
+                height: 100%;
                 position: relative;
                 margin: 0 5px;
+                background: #2196f3;
                 -webkit-box-reflect: below 1px linear-gradient(transparent, #0004);
                 #stag, #htag, #mtag{
+                    vertical-align: middle;
+                    
                     width: 100%;
+                    
+                    background: #127fd6;
+                    text-align: center;
+                    color: #fff;
+                    flex: auto;
                 }
-                span{
+                #stag{
+                    background: #ec0062;
+                }
+                #second{
+                    transform: scale(1.2);
+                    animation: seconds_anim 1s infinite;
+                }
+                
+                &#scont{
+                    background: #ff006a;
+                }
+                .cell{
+                    //flex: auto;
+                    text-align: center;
+                    color: #fff;
+                    font-size: 3em;
+                    vertical-align: middle;
+                    &#hour{
+                        span{
+                            background-color: transparent;
+                            padding: .5rem;
+                            height: fit-content;
+                            position: absolute;
+                            left: 0;
+                            font-size: .8rem;
+                        }
+                    }
+                }
+                /* &:last-child div{
+                    background: #ff006a;
+                } */
+                /* span{
                     position: relative;
                     display: block;
                     color: #fff;
                     font-weight: 300;
-                    background: #2196f3;
+                    
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     font-size: 3em;
                     z-index: 10;
                     &:nth-child(2){
-                        height: 30px;
+                        //height: 30px;
                         font-size: .7em;
                         letter-spacing: .2em;
                         z-index: 9;
@@ -52,16 +94,28 @@
                         text-transform: uppercase;
                         font-weight: 500;
                     }
+                    &#second{
+                        animation: seconds_anim 1s infinite ;
+                    }
                 }
-                &:last-child span{
-                    background: #ff006a;
-                }
-                &:last-child span:nth-child(2){
-                    background: #ec0062;
-                }
+                &:last-child div:nth-child(2){
+                } */
                 
             }
         }
-        
+        @keyframes seconds_anim {
+            0%{
+                transform: scale(1);
+            }
+            10%{
+                transform: scale(1);
+            }
+            95%{
+                transform: scale(1);
+            }
+            100%{
+                transform: scale(1.2);
+            }
+        }
     }
 }

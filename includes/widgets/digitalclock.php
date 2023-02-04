@@ -11,6 +11,8 @@ class Digital_Clock extends Widget_Base{
 	{
 		parent::__construct($data, $args);
 
+        
+
 		wp_enqueue_style('wn-dclock-css', plugin_dir_url(__FILE__).'/css/dClock_style.css');
         wp_enqueue_script('wn-dclock-js', plugin_dir_url(__FILE__).'/js/dClock_script.js');
 	}
@@ -51,7 +53,7 @@ class Digital_Clock extends Widget_Base{
             'head-text',[
                 'label'=>esc_html('Header Text', 'ele-digital-clock'),
                 'type'=>Controls_Manager::TEXT,
-                'default'=>'Time is Now',
+                'default'=>'your time is now',
                 'dynamic'=>[
                     'active'=>true
                 ]
@@ -92,6 +94,32 @@ class Digital_Clock extends Widget_Base{
             ]
         );
 
+        $this->add_control(
+            'alignment',
+			[
+				'label' => esc_html__( 'Alignment', 'ele-digital-clock' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'flex-start', 'ele-digital-clock' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'ele-digital-clock' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'flex-end', 'ele-digital-clock' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .wn-dclock-container' => 'justify-content: {{VALUE}}',
+				],
+			]
+        );
+
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -113,6 +141,8 @@ class Digital_Clock extends Widget_Base{
 				'selector' => '{{WRAPPER}} .wn-dclock-container .wn-dclock h2',
 			]
 		);
+
+        //TODO: change number font
         $this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
@@ -124,6 +154,8 @@ class Digital_Clock extends Widget_Base{
 				'selector' => '{{WRAPPER}} #time span',
 			]
 		);
+
+        //TODO: change tag font
         $this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
@@ -137,48 +169,83 @@ class Digital_Clock extends Widget_Base{
 			]
 		);
 
-        $this->add_responsive_control(
-			'cell-padding',
-			[
-				'label' => esc_html__( 'Cell Padding', 'ele-digital-clock' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', 'rem' ],
-				'selectors' => [
-					'{{WRAPPER}} #time div #hour' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					'{{WRAPPER}} #time div #minute' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					'{{WRAPPER}} #time div #second' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-                'default' => [ 'isLinked' => true, 'top' => 5, 'right' => 20, 'bottom' => 5, 'left' => 20, 'unit' => 'px' ],
+        // $this->add_responsive_control(
+		// 	'cell-padding',
+		// 	[
+		// 		'label' => esc_html__( 'Cell Padding', 'ele-digital-clock' ),
+		// 		'type' => Controls_Manager::DIMENSIONS,
+		// 		'size_units' => [ 'px', 'rem' ],
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #time div #hour' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+		// 			'{{WRAPPER}} #time div #minute' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+		// 			'{{WRAPPER}} #time div #second' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+		// 		],
+        //         'default' => [ 'isLinked' => true, 'top' => 5, 'right' => 20, 'bottom' => 5, 'left' => 20, 'unit' => 'px' ],
                 
-			]
-		);
+		// 	]
+		// );
+        
         $this->add_responsive_control(
-            'tag-height', [
-                'label'=>esc_html('Tag Height', 'ele-digital-clock' ),
+            'clock-width', [
+                'label'=>esc_html('Clock Width', 'ele-digital-clock' ),
                 'type'=>Controls_Manager::SLIDER,
                 'size_units'=>['px'],
-                'range'=>['px'=>['min'=>20,'max'=>300]],
+                'range'=>['px'=>['min'=>10,'max'=>100]],
                 'default' => [
 					'unit' => 'px',
-					
 				],
                 'selectors'=>[
-					'{{WRAPPER}} #time div #htag'=>'height:{{SIZE}}{{UNIT}}',
-					'{{WRAPPER}} #time div #mtag'=>'height:{{SIZE}}{{UNIT}}',
-					'{{WRAPPER}} #time div #stag'=>'height:{{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} #time .cell-cont'=>'width:{{SIZE}}{{UNIT}}',
+				]
+            ]
+        );
+        $this->add_responsive_control(
+            'clock-height', [
+                'label'=>esc_html('Clock Height', 'ele-digital-clock' ),
+                'type'=>Controls_Manager::SLIDER,
+                'size_units'=>['px'],
+                'range'=>['px'=>['min'=>50,'max'=>500]],
+                'default' => [
+					'unit' => 'px',
+				],
+                'selectors'=>[
+					'{{WRAPPER}} #time'=>'height:{{SIZE}}{{UNIT}}',
 				]
             ]
         );
 
-        
+        $this->add_responsive_control(
+            'cell-height', [
+                'label'=>esc_html('Cell Height', 'ele-digital-clock' ),
+                'type'=>Controls_Manager::SLIDER,
+                'size_units'=>['%'],
+                'range'=>['%'=>['min'=>10,'max'=>100]],
+                'default' => [
+					'unit' => '%',
+				],
+                'selectors'=>[
+					'{{WRAPPER}} #time .cell-cont .cell'=>'height:{{SIZE}}{{UNIT}}',
+				]
+            ]
+        );
 
+        $this->add_control(
+            'am-color',[
+                'label'=>esc_html('AM Color', 'ele-digital-clock'),
+                'type'=>Controls_Manager::COLOR,
+                'default'=>'',
+                'selectors'=>[
+					'{{WRAPPER}} #time #hcont #hour #am-tag'=>'color:{{VALUE}}'
+				]
+            ]
+        );
         $this->add_control(
             'hour-color',[
                 'label'=>esc_html('Hour Cell Color', 'ele-digital-clock'),
                 'type'=>Controls_Manager::COLOR,
                 'default'=>'',
                 'selectors'=>[
-					'{{WRAPPER}} #time #hour'=>'background-color:{{VALUE}}'
+					'{{WRAPPER}} #time #hcont'=>'background-color:{{VALUE}}'
 				]
             ]
         );
@@ -188,7 +255,7 @@ class Digital_Clock extends Widget_Base{
                 'type'=>Controls_Manager::COLOR,
                 'default'=>'',
                 'selectors'=>[
-					'{{WRAPPER}} #time #minute'=>'background-color:{{VALUE}}'
+					'{{WRAPPER}} #time #mcont'=>'background-color:{{VALUE}}'
 				]
             ]
         );
@@ -198,7 +265,7 @@ class Digital_Clock extends Widget_Base{
                 'type'=>Controls_Manager::COLOR,
                 'default'=>'',
                 'selectors'=>[
-					'{{WRAPPER}} #time #second'=>'background-color:{{VALUE}}'
+					'{{WRAPPER}} #time #scont'=>'background-color:{{VALUE}}'
 				]
             ]
         );
@@ -242,15 +309,17 @@ class Digital_Clock extends Widget_Base{
         $settings = $this->get_settings_for_display();
         
         $html = '<section class="wn-dclock-container">
+        <script>setInterval(digital_clock, 1000);</script>
         <div class="wn-dclock">
             <h2>' . esc_html( $settings['head-text'] ) . '</h2>
             <div id="time">
-                <div>
-                    <span id="hour">00</span>
-                    <span id="htag">' . esc_html( $settings['hour-text'] ) .'</span>
+                <div class="cell-cont" id="hcont">
+                    <div class="cell" id="hour">00<span id="am-tag"></span></div>
+                    <div id="htag">' . esc_html( $settings['hour-text'] ) .'</div>
                 </div>
-                <div><span id="minute">00</span><span id="mtag">' . esc_html( $settings['minute-text'] ) . '</span></div>
-                <div><span id="second">00</span><span id="stag">' . esc_html( $settings['second-text'] ) . '</span></div>
+                <div class="cell-cont" id="mcont"><div class="cell" id="minute">00</div><div id="mtag">' . esc_html( $settings['minute-text'] ) . '</div></div>
+                <div class="cell-cont" id="scont"><div class="cell" id="second">00</div><div id="stag">' . esc_html( $settings['second-text'] ) . '</div></div>
+                
             </div>
         </div>
     </section>';
@@ -260,3 +329,5 @@ class Digital_Clock extends Widget_Base{
     }
 
 }
+
+//TODO: aling text verticaly

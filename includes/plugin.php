@@ -39,8 +39,8 @@ final class Plugin
 
 	public function is_compatible()
 	{
-		/* var_dump(in_array( 'elementor/elementor.php', get_option('active_plugins')));
-		var_dump(get_plugins()['elementor/elementor.php']); */
+		// var_dump(in_array( 'elementor/elementor.php', get_option('active_plugins')));
+		// var_dump(get_plugins()['elementor/elementor.php']);
 
 		if (!is_plugin_active('elementor/elementor.php')) {
 			add_action('admin_notices', [$this, 'admin_notice_missing_main_plugin']);

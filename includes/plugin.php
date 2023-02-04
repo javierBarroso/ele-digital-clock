@@ -47,10 +47,10 @@ final class Plugin
 			return false;
 		}
 		
-		if (!version_compare(ELEMENTOR_VERSION, self::MINIMUM_ELEMENTOR_VERSION, '>=')) {
+		/* if (!version_compare(ELEMENTOR_VERSION, self::MINIMUM_ELEMENTOR_VERSION, '>=')) {
 			add_action('admin_notices', [$this, 'admin_notice_minimum_elementor_version']);
 			return false;
-		}
+		} */
 
 		if (version_compare(PHP_VERSION, self::MINIMUM_PHP_VERSION, '<')) {
 			add_action('admin_notices', [$this, 'admin_notice_minimum_php_version']);

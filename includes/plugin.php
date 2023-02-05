@@ -30,27 +30,27 @@ final class Plugin
 
 	public function __construct()
 	{
-		if ($this->is_compatible()) {
+		if ($this->is_compatible() && add_action('admin_menu', array($this, 'elementor_version'))) {
 			add_action('elementor/init', [$this, 'init']);
 		}
 	}
 
+	function elementor_version(){
 
+		if (!version_compare(ELEMENTOR_VERSION, self::MINIMUM_ELEMENTOR_VERSION, '>=')) {
+			add_action('admin_notices', [$this, 'admin_notice_minimum_elementor_version']);
+			return false;
+		}
+		return true;
+	}
 
 	public function is_compatible()
 	{
-		// var_dump(in_array( 'elementor/elementor.php', get_option('active_plugins')));
-		// var_dump(get_plugins()['elementor/elementor.php']);
 
 		if (!is_plugin_active('elementor/elementor.php')) {
 			add_action('admin_notices', [$this, 'admin_notice_missing_main_plugin']);
 			return false;
 		}
-		
-		/* if (!version_compare(ELEMENTOR_VERSION, self::MINIMUM_ELEMENTOR_VERSION, '>=')) {
-			add_action('admin_notices', [$this, 'admin_notice_minimum_elementor_version']);
-			return false;
-		} */
 
 		if (version_compare(PHP_VERSION, self::MINIMUM_PHP_VERSION, '<')) {
 			add_action('admin_notices', [$this, 'admin_notice_minimum_php_version']);

@@ -6,9 +6,12 @@
     width: 100%;
     *{
         font-family:Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
     .wn-dclock{
-        width: 100%;
+        width: fit-content;
         h2{
             position: relative;
             display: block;
@@ -21,7 +24,7 @@
             font-size: 0.8em;
             width: 100%;
         }
-    #time{
+        #time{
             display: flex;
             justify-content: center;
             width: 100%;
@@ -33,30 +36,12 @@
                 position: relative;
                 margin: 0 5px;
                 background: #2196f3;
-                -webkit-box-reflect: below 1px linear-gradient(transparent, #0004);
-                #stag, #htag, #mtag{
-                    vertical-align: middle;
-                    
-                    width: 100%;
-                    
-                    background: #127fd6;
-                    text-align: center;
-                    color: #fff;
-                    flex: auto;
-                }
-                #stag{
-                    background: #ec0062;
-                }
-                #second{
-                    transform: scale(1.2);
-                    animation: seconds_anim 1s infinite;
-                }
-                
+                -webkit-box-reflect: below 0px linear-gradient(transparent, #0004);
                 &#scont{
                     background: #ff006a;
                 }
                 .cell{
-                    padding: .2rem 1rem;
+                    padding: 0 1rem;
                     text-align: center;
                     color: #fff;
                     font-size: 3em;
@@ -68,56 +53,39 @@
                             height: fit-content;
                             position: absolute;
                             left: 0;
-                            font-size: .6rem;
+                            top: 0;
                         }
                     }
-                }
-                /* &:last-child div{
-                    background: #ff006a;
-                } */
-                /* span{
-                    position: relative;
-                    display: block;
-                    color: #fff;
-                    font-weight: 300;
-                    
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    font-size: 3em;
-                    z-index: 10;
-                    &:nth-child(2){
-                        //height: 30px;
-                        font-size: .7em;
-                        letter-spacing: .2em;
-                        z-index: 9;
-                        box-shadow: none;
-                        background: #127fd6;
-                        text-transform: uppercase;
-                        font-weight: 500;
-                    }
                     &#second{
-                        animation: seconds_anim 1s infinite ;
+                        transform: scale(1.2);
+                        animation: seconds_anim 1s infinite;
                     }
                 }
-                &:last-child div:nth-child(2){
-                } */
-                
+                #stag, #htag, #mtag{
+                    vertical-align: middle;
+                    width: 100%;
+                    background: #127fd6;
+                    text-align: center;
+                    flex: auto;
+                }
+                #stag{
+                    background: #cc0055;
+                }
             }
         }
-        @keyframes seconds_anim {
-            0%{
-                transform: scale(1);
-            }
-            10%{
-                transform: scale(1);
-            }
-            95%{
-                transform: scale(1);
-            }
-            100%{
-                transform: scale(1.2);
-            }
-        }
+    }
+}
+@keyframes seconds_anim {
+    0%{
+        transform: scale(1);
+    }
+    10%{
+        transform: scale(1);
+    }
+    95%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(1.2);
     }
 }

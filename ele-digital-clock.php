@@ -25,6 +25,7 @@ along with Ele Digital Clock. If not, see {URI to Plugin License}.
 
 /**
  * Elementor tested up to: 3.10.2
+ * Elementor pro tested up to: 3.10.1
  */
 
 define( 'MY_PLUGIN_PATH', plugin_dir_path( __DIR__ ) );

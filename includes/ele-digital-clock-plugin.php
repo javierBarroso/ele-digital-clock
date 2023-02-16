@@ -9,7 +9,7 @@ if ( ! function_exists( 'get_plugins' ) ) {
 	require_once ABSPATH . 'wp-admin/includes/plugin.php';
 }
 
-final class Plugin
+final class Eledc_Digital_Clock_Plugin
 {
 
 	const MINIMUM_ELEMENTOR_VERSION  = '3.6.0';
@@ -134,17 +134,16 @@ final class Plugin
 	public function register_widgets($widgets_manager)
 	{
 
-		require_once(__DIR__ . '/widgets/digitalclock.php');
+		require_once(__DIR__ . '/widgets/ele-digital-clock-widget.php');
 
-		$widgets_manager->register(new \Digital_Clock());
+		$widgets_manager->register(new Eledc_Digital_Clock_Widget());
 	}
 
 
 	function add_elementor_widget_categories($elements_manager)
 	{
-
 		$elements_manager->add_category(
-			'jbplugins',
+			'jb-eledc-widget',
 			[
 				'title' => esc_html__('Clocks', 'ele-digital-clock'),
 				'icon' => 'fa fa-plug',

@@ -1,5 +1,5 @@
 
-function digital_clock(){
+function ele_digital_clock(){
 
     let hours = document.querySelector('#hour');
     let minutes = document.querySelector('#minute');

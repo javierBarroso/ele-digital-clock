@@ -5,20 +5,20 @@ use Elementor\Controls_Manager;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
 
-class Digital_Clock extends Widget_Base
+class Eledc_Digital_Clock_Widget extends Widget_Base
 {
 
     public function __construct($data = array(), $args = null)
     {
         parent::__construct($data, $args);
 
-        wp_enqueue_style('wn-dclock-css', plugin_dir_url(__FILE__) . '/css/dClock_style.css');
-        wp_enqueue_script('wn-dclock-js', plugin_dir_url(__FILE__) . '/js/dClock_script.js');
+        wp_enqueue_style('eledclock-css', plugin_dir_url(__FILE__) . '/css/eledClock_style.css');
+        wp_enqueue_script('eledclock-js', plugin_dir_url(__FILE__) . '/js/eledClock_script.js');
     }
 
     public function get_name()
     {
-        return 'ele-dclock';
+        return 'ele-digital-clock';
     }
 
     public function get_title()
@@ -37,7 +37,7 @@ class Digital_Clock extends Widget_Base
 
     public function get_categories()
     {
-        return ['jbplugins'];
+        return ['jb-eledc-widget'];
     }
 
     public function get_keywords()
@@ -153,7 +153,8 @@ class Digital_Clock extends Widget_Base
                 'fields_options' => [
                     'typography' => ['default' => 'yes'],
                     'font_size' => ['default' => ['size' => 25]],
-                    'font_weight' => ['default' => 300],
+                    'font_weight' => ['default' => 200],
+                    'font_family' => ['default' => 'Poppins-eledc'],
                 ],
             ]
         );
@@ -170,8 +171,9 @@ class Digital_Clock extends Widget_Base
                 'fields_options' => [
                     'typography' => ['default' => 'yes'],
                     'font_size' => ['default' => ['size' => 14]],
-                    'font_weight' => ['default' => 300],
+                    'font_weight' => ['default' => 200],
                     'line-height' => ['default' => 1],
+                    'font_family' => ['default' => 'Poppins-eledc'],
                 ],
             ]
         );
@@ -189,6 +191,7 @@ class Digital_Clock extends Widget_Base
                     'typography' => ['default' => 'yes'],
                     'font_size' => ['default' => ['size' => 65]],
                     'font_weight' => ['default' => 200],
+                    'font_family' => ['default' => 'Poppins-eledc'],
                 ],
             ]
         );
@@ -206,7 +209,8 @@ class Digital_Clock extends Widget_Base
                 'fields_options' => [
                     'typography' => ['default' => 'yes'],
                     'font_size' => ['default' => ['size' => 14]],
-                    'font_weight' => ['default' => 300],
+                    'font_weight' => ['default' => 200],
+                    'font_family' => ['default' => 'Poppins-eledc'],
                 ],
             ]
         );
@@ -230,7 +234,7 @@ class Digital_Clock extends Widget_Base
                 'range' => ['px' => ['min' => 5, 'max' => 900]],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 3,
+                    'size' => 150,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} #time .cell-cont' => 'width:{{SIZE}}{{UNIT}}',
@@ -384,7 +388,7 @@ class Digital_Clock extends Widget_Base
         $settings = $this->get_settings_for_display();
 
         $html = '<section class="wn-dclock-container">
-        <script>setInterval(digital_clock, 1000);</script>
+        <script>setInterval(ele_digital_clock, 1000);</script>
         <div class="wn-dclock">
             <h2>' . esc_html($settings['head-text']) . '</h2>
             <div id="time">
@@ -403,4 +407,3 @@ class Digital_Clock extends Widget_Base
     }
 }
 
-//TODO: aling text verticaly

@@ -127,7 +127,8 @@ if(!class_exists('Eledc_Digital_Clock_Plugin')){
 	
 		public function init()
 		{
-	
+			wp_enqueue_style('eledclock-css', plugin_dir_url(__FILE__) . '/css/eledClock_style.css');
+            wp_enqueue_script('eledclock-js', plugin_dir_url(__FILE__) . '/js/eledClock_script.js');
 			add_action('elementor/widgets/register', [$this, 'register_widgets']);
 			add_action('elementor/elements/categories_registered', [$this, 'add_elementor_widget_categories']);
 			

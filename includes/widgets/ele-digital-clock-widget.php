@@ -13,9 +13,6 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
         public function __construct($data = array(), $args = null)
         {
             parent::__construct($data, $args);
-    
-            wp_enqueue_style('eledclock-css', plugin_dir_url(__FILE__) . '/css/eledClock_style.css');
-            wp_enqueue_script('eledclock-js', plugin_dir_url(__FILE__) . '/js/eledClock_script.js');
         }
     
         public function get_name()

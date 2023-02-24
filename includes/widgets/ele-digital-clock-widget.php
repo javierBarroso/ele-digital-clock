@@ -125,7 +125,7 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     ],
                     'default' => 'center',
                     'selectors' => [
-                        '{{WRAPPER}} .wn-dclock-container' => 'justify-content: {{VALUE}}',
+                        '{{WRAPPER}} .ele-dclock-container' => 'justify-content: {{VALUE}}',
                     ],
                 ]
             );
@@ -148,7 +148,7 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     'global' => [
                         'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                     ],
-                    'selector' => '{{WRAPPER}} .wn-dclock-container .wn-dclock h2',
+                    'selector' => '{{WRAPPER}} .ele-dclock-container .ele-dclock h2',
                     'fields_options' => [
                         'typography' => ['default' => 'yes'],
                         'font_size' => ['default' => ['size' => 25]],
@@ -291,7 +291,7 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     'type' => Controls_Manager::COLOR,
                     'default' => '#333',
                     'selectors' => [
-                        '{{WRAPPER}} .wn-dclock h2' => 'color:{{VALUE}}'
+                        '{{WRAPPER}} .ele-dclock h2' => 'color:{{VALUE}}'
                     ]
                 ]
             );

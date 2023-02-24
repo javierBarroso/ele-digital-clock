@@ -24,7 +24,7 @@
             text-align: center;
             margin: 10px 0;
             font-weight: 300;
-            color: #fff;
+            color: #333333;
             text-transform: uppercase;
             letter-spacing: 0.4em;
             font-size: 0.8em;
@@ -45,6 +45,9 @@
                 -webkit-box-reflect: below 0px linear-gradient(transparent 30%, #0004);
                 &#scont{
                     background: #ff006a;
+                }
+                .tag{
+                    color: #fff;
                 }
                 .cell{
                     padding: 0 1rem;

@@ -29,7 +29,7 @@
   text-align: center;
   margin: 10px 0;
   font-weight: 300;
-  color: #fff;
+  color: #333333;
   text-transform: uppercase;
   letter-spacing: 0.4em;
   font-size: 0.8em;
@@ -52,6 +52,9 @@
 }
 .ele-dclock-container .ele-dclock #time .cell-cont#scont {
   background: #ff006a;
+}
+.ele-dclock-container .ele-dclock #time .cell-cont .tag {
+  color: #fff;
 }
 .ele-dclock-container .ele-dclock #time .cell-cont .cell {
   padding: 0 1rem;

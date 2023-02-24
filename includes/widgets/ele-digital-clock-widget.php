@@ -289,7 +289,7 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                 [
                     'label' => esc_html('Header Color', 'ele-digital-clock'),
                     'type' => Controls_Manager::COLOR,
-                    'default' => '#333',
+                    'default' => '#333333',
                     'selectors' => [
                         '{{WRAPPER}} .ele-dclock h2' => 'color:{{VALUE}}'
                     ]
@@ -301,7 +301,7 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                 [
                     'label' => esc_html('Font Color', 'ele-digital-clock'),
                     'type' => Controls_Manager::COLOR,
-                    'default' => '#fff',
+                    'default' => '#ffffff',
                     'selectors' => [
                         '{{WRAPPER}} #time .cell-cont .tag' => 'color:{{VALUE}}',
                         '{{WRAPPER}} #time .cell-cont .cell' => 'color:{{VALUE}}',

@@ -386,21 +386,21 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
     
             $settings = $this->get_settings_for_display();
     
-            $html = '<section class="wn-dclock-container">
-            <script>setInterval(ele_digital_clock, 1000);</script>
-            <div class="wn-dclock">
-                <h2>' . esc_html($settings['head-text']) . '</h2>
-                <div id="time">
-                    <div class="cell-cont" id="hcont">
-                        <div class="cell" id="hour">00<span id="am-tag"></span></div>
-                        <div class="tag" id="htag">' . esc_html($settings['hour-text']) . '</div>
-                    </div>
-                    <div class="cell-cont" id="mcont"><div class="cell" id="minute">00</div><div class="tag" id="mtag">' . esc_html($settings['minute-text']) . '</div></div>
-                    <div class="cell-cont" id="scont"><div class="cell" id="second">00</div><div class="tag" id="stag">' . esc_html($settings['second-text']) . '</div></div>
-                    
-                </div>
-            </div>
-        </section>';
+            $html = '<section class="ele-dclock-container">
+                        <script>setInterval(ele_digital_clock, 1000);</script>
+                        <div class="ele-dclock">
+                            <h2>' . esc_html($settings['head-text']) . '</h2>
+                            <div id="time">
+                                <div class="cell-cont" id="hcont">
+                                    <div class="cell" id="hour">00<span id="am-tag"></span></div>
+                                    <div class="tag" id="htag">' . esc_html($settings['hour-text']) . '</div>
+                                </div>
+                                <div class="cell-cont" id="mcont"><div class="cell" id="minute">00</div><div class="tag" id="mtag">' . esc_html($settings['minute-text']) . '</div></div>
+                                <div class="cell-cont" id="scont"><div class="cell" id="second">00</div><div class="tag" id="stag">' . esc_html($settings['second-text']) . '</div></div>
+                                
+                            </div>
+                        </div>
+                    </section>';
     
             echo $html;
         }

@@ -3,7 +3,7 @@
     src: url('../font/Poppins-Light.woff');
 }
 
-.wn-dclock-container{
+.ele-dclock-container{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +16,7 @@
         font-family: 'Poppins-eledc', sans-serif;
         font-weight: 200;
     }
-    .wn-dclock{
+    .ele-dclock{
         width: fit-content;
         h2{
             position: relative;

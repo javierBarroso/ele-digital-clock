@@ -1,0 +1,8 @@
+.ele_dclock_widget_icon_svg {
+    background-image: url('../img/ele_digital_clock.svg') !important; 
+    height: 30px;
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}

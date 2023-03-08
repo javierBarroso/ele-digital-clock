@@ -5,48 +5,48 @@ use Elementor\Controls_Manager;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
 
-if(!class_exists('Eledc_Digital_Clock_Widget')){
+if (!class_exists('Eledc_Digital_Clock_Widget')) {
 
     class Eledc_Digital_Clock_Widget extends Widget_Base
     {
-    
+
         public function __construct($data = array(), $args = null)
         {
             parent::__construct($data, $args);
         }
-    
+
         public function get_name()
         {
             return 'ele-digital-clock';
         }
-    
+
         public function get_title()
         {
             return esc_html__('Digital Clock', 'ele-digital-clock');
         }
-    
+
         public function get_icon()
         {
-            return 'eicon-clock-o';
+            return 'ele_dclock_widget_icon_svg';
         }
-    
+
         public function get_custom_help_url()
         {
         }
-    
+
         public function get_categories()
         {
             return ['jb-eledc-widget'];
         }
-    
+
         public function get_keywords()
         {
             return ['keyword', 'keyword'];
         }
-    
+
         protected function register_controls()
         {
-    
+
             $this->start_controls_section(
                 'layout_section',
                 [
@@ -54,7 +54,7 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     'tab' => Controls_Manager::TAB_CONTENT,
                 ]
             );
-    
+
             $this->add_control(
                 'head-text',
                 [
@@ -64,7 +64,7 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     'dynamic' => [
                         'active' => true
                     ]
-    
+
                 ]
             );
             $this->add_control(
@@ -76,7 +76,7 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     'dynamic' => [
                         'active' => true
                     ]
-    
+
                 ]
             );
             $this->add_control(
@@ -88,7 +88,7 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     'dynamic' => [
                         'active' => true
                     ]
-    
+
                 ]
             );
             $this->add_control(
@@ -100,10 +100,10 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     'dynamic' => [
                         'active' => true
                     ]
-    
+
                 ]
             );
-    
+
             $this->add_control(
                 'alignment',
                 [
@@ -129,9 +129,9 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     ],
                 ]
             );
-    
+
             $this->end_controls_section();
-    
+
             $this->start_controls_section(
                 'font_section',
                 [
@@ -139,7 +139,7 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     'tab' => Controls_Manager::TAB_STYLE,
                 ]
             );
-    
+
             $this->add_group_control(
                 Group_Control_Typography::get_type(),
                 [
@@ -157,7 +157,7 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     ],
                 ]
             );
-    
+
             $this->add_group_control(
                 Group_Control_Typography::get_type(),
                 [
@@ -176,7 +176,7 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     ],
                 ]
             );
-    
+
             $this->add_group_control(
                 Group_Control_Typography::get_type(),
                 [
@@ -194,7 +194,7 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     ],
                 ]
             );
-    
+
             $this->add_group_control(
                 Group_Control_Typography::get_type(),
                 [
@@ -213,9 +213,9 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     ],
                 ]
             );
-    
+
             $this->end_controls_section();
-    
+
             $this->start_controls_section(
                 'size_section',
                 [
@@ -223,7 +223,7 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     'tab' => Controls_Manager::TAB_STYLE,
                 ]
             );
-    
+
             $this->add_responsive_control(
                 'clock-width',
                 [
@@ -256,7 +256,7 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     ]
                 ]
             );
-    
+
             $this->add_responsive_control(
                 'cell-height',
                 [
@@ -273,9 +273,9 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     ]
                 ]
             );
-    
+
             $this->end_controls_section();
-    
+
             $this->start_controls_section(
                 'color_section',
                 [
@@ -283,7 +283,7 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     'tab' => Controls_Manager::TAB_STYLE,
                 ]
             );
-    
+
             $this->add_control(
                 'header-color',
                 [
@@ -295,7 +295,7 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     ]
                 ]
             );
-    
+
             $this->add_control(
                 'font-color',
                 [
@@ -309,7 +309,7 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     ]
                 ]
             );
-    
+
             $this->add_control(
                 'hour-background-color',
                 [
@@ -376,19 +376,19 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                     ]
                 ]
             );
-            
-    
+
+
             $this->end_controls_section();
         }
-    
+
         protected function render()
         {
-    
+
             $settings = $this->get_settings_for_display();
-    
+
             $html = '<section class="ele-dclock-container">
                         <script>setInterval(ele_digital_clock, 1000);</script>
-                        <div class="ele-dclock">
+                        <div class="ele-dclock" id="card">
                             <h2>' . esc_html($settings['head-text']) . '</h2>
                             <div id="time">
                                 <div class="cell-cont" id="hcont">
@@ -401,9 +401,8 @@ if(!class_exists('Eledc_Digital_Clock_Widget')){
                             </div>
                         </div>
                     </section>';
-    
+
             echo $html;
         }
     }
 }
-

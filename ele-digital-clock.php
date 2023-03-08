@@ -33,11 +33,16 @@ if(!defined('ABSPATH')){
     exit();
 }
 
+if(!defined('ELE_DIGITAL_CLOCK_URL')){
+    define('ELE_DIGITAL_CLOCK_URL', plugin_dir_url(__FILE__));
+}
+
 function eledc_digital_clock(){
 
     require_once(__DIR__.'/includes/ele-digital-clock-plugin.php');
     if (class_exists('Eledc_Digital_Clock_Plugin')){
         Eledc_Digital_Clock_Plugin::instance();
+        ////echo '<i class="ele_dclock_widget_icon"></i>';
     }
 
 }

@@ -30,4 +30,30 @@ function ele_digital_clock(){
     seconds.innerHTML = s;
 }
 
+const setProp = (el, prop, value) => el.style.setProperty(prop, value) 
+	
+  const el =  document.getElementById('card')
+
+	const onMouseUpdate = e => {
+        let width = el.offsetWidth
+        let XRel = e.pageX - el.offsetLeft
+        let YRel = e.pageY - el.offsetTop
+    
+        let YAngle = -(0.5 - (XRel / width)) * 40; 
+        let XAngle = (0.5 - (YRel / width)) * 40;
+    
+        setProp(el, '--dy', `${YAngle}deg`)
+        setProp(el, '--dx', `${XAngle}deg`)
+	}
+	
+	const resetProps = () => {
+		el.style.setProperty('--dy', '0')
+		el.style.setProperty('--dx', '0')
+	}
+	
+
+	el.addEventListener('mousemove', onMouseUpdate, false)
+	el.addEventListener('mouseenter', onMouseUpdate, false)
+	el.addEventListener('mouseleave', resetProps, false)
+
 

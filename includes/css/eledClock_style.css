@@ -2,6 +2,12 @@
   font-family: "Poppins-eledc";
   src: url("../font/Poppins-Light.woff");
 }
+* {
+  --dy: 1;
+  --dx: 1;
+  --dz: 0;
+}
+
 .ele-dclock-container {
   display: flex;
   justify-content: center;
@@ -22,6 +28,8 @@
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  transform: perspective(225px) translateZ(0) rotateX(var(--dx)) rotateY(var(--dy));
+  transition: all 0.3s linear 0s;
 }
 .ele-dclock-container .ele-dclock h2 {
   position: relative;

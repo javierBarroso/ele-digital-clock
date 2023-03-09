@@ -30,9 +30,9 @@ function ele_digital_clock(){
     seconds.innerHTML = s;
 }
 
-const setProp = (el, prop, value) => el.style.setProperty(prop, value) 
+/* const setProp = (el, prop, value) => el.style.setProperty(prop, value) 
 	
-  const el =  document.getElementById('card')
+const el =  document.getElementById('card')
 
 	const onMouseUpdate = e => {
         let width = el.offsetWidth
@@ -57,3 +57,4 @@ const setProp = (el, prop, value) => el.style.setProperty(prop, value)
 	el.addEventListener('mouseleave', resetProps, false)
 
 
+ */

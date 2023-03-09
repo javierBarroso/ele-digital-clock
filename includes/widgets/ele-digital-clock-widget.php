@@ -131,6 +131,34 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
             );
 
             $this->end_controls_section();
+            
+            $this->start_controls_section(
+                'style_presets_section',
+                [
+                    'label' => esc_html__('Style Presets', 'ele-digital-clock'),
+                    'tab' => Controls_Manager::TAB_STYLE,
+                ]
+            );
+
+            $this->add_control(
+                'border_style',
+                [
+                    'label' => esc_html__( 'Border Style', 'ele-digital-clock' ),
+                    'type' => \Elementor\Controls_Manager::SELECT,
+                    'default' => 'solid',
+                    'options' => [
+                        'solid'  => esc_html__( 'Solid', 'ele-digital-clock' ),
+                        'filter: blur(10px); background: rgba(#000, 0.3);' => esc_html__( 'Glass', 'ele-digital-clock' ),
+                        'background-color: #222;' => esc_html__( 'Dark', 'ele-digital-clock' ),
+                        'background-color: #ddd;' => esc_html__( 'Light', 'ele-digital-clock' ),
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} #time #hcont, #time #mcont, #time #scont' => '{{VALUE}};',
+                    ],
+                ]
+            );
+
+            $this->end_controls_section();
 
             $this->start_controls_section(
                 'font_section',
@@ -315,7 +343,7 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                 [
                     'label' => esc_html('Hour Background Color', 'ele-digital-clock'),
                     'type' => Controls_Manager::COLOR,
-                    'default' => '#2196f3',
+                    'default' => null,
                     'selectors' => [
                         '{{WRAPPER}} #time #hcont' => 'background-color:{{VALUE}}'
                     ]
@@ -326,7 +354,7 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                 [
                     'label' => esc_html('Minute Background Color', 'ele-digital-clock'),
                     'type' => Controls_Manager::COLOR,
-                    'default' => '#2196f3',
+                    'default' => null,
                     'selectors' => [
                         '{{WRAPPER}} #time #mcont' => 'background-color:{{VALUE}}'
                     ]
@@ -337,7 +365,7 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                 [
                     'label' => esc_html('Second Background Color', 'ele-digital-clock'),
                     'type' => Controls_Manager::COLOR,
-                    'default' => '#ff006a',
+                    'default' => null,
                     'selectors' => [
                         '{{WRAPPER}} #time #scont' => 'background-color:{{VALUE}}'
                     ]

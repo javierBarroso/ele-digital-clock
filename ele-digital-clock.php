@@ -36,6 +36,9 @@ if(!defined('ABSPATH')){
 if(!defined('ELE_DIGITAL_CLOCK_URL')){
     define('ELE_DIGITAL_CLOCK_URL', plugin_dir_url(__FILE__));
 }
+if(!defined('ELE_DIGITAL_CLOCK_PATH')){
+    define('ELE_DIGITAL_CLOCK_PATH', plugin_dir_path(__FILE__));
+}
 
 function eledc_digital_clock(){
 

@@ -2,12 +2,6 @@
   font-family: "Poppins-eledc";
   src: url("../font/Poppins-Light.woff");
 }
-* {
-  --dy: 1;
-  --dx: 1;
-  --dz: 0;
-}
-
 .ele-dclock-container {
   display: flex;
   justify-content: center;
@@ -28,7 +22,6 @@
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  transform: perspective(225px) translateZ(0) rotateX(var(--dx)) rotateY(var(--dy));
   transition: all 0.3s linear 0s;
 }
 .ele-dclock-container .ele-dclock h2 {
@@ -42,32 +35,73 @@
   letter-spacing: 0.4em;
   font-size: 0.8em;
   width: 100%;
+  z-index: 10;
 }
 .ele-dclock-container .ele-dclock #time {
   display: flex;
   justify-content: center;
   width: 100%;
+  --hmcont: #2196f3;
+  --scont: #ff006a;
+  --hmtag: #127fd6;
+  --stag: #cc0055;
+  --fillterBlur: 0;
+  --showBackGround: hidden;
+  --backgroundFigureBorderRadius: 100px;
+  --fontColor: #fff;
+}
+.ele-dclock-container .ele-dclock #time::after {
+  visibility: var(--showBackGround);
+  content: "";
+  z-index: inherit;
+  background: #ff006a;
+  height: 150px;
+  width: 150px;
+  aspect-ratio: 1;
+  border-radius: var(--backgroundFigureBorderRadius);
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: back_circles 3s ease-in-out infinite;
+          animation: back_circles 3s ease-in-out infinite;
+}
+.ele-dclock-container .ele-dclock #time::before {
+  visibility: var(--showBackGround);
+  content: "";
+  background: #127fd6;
+  height: 100px;
+  width: 100px;
+  aspect-ratio: 1;
+  border-radius: var(--backgroundFigureBorderRadius);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  -webkit-animation: back_circles 5s ease-in-out infinite;
+          animation: back_circles 5s ease-in-out infinite;
 }
 .ele-dclock-container .ele-dclock #time .cell-cont {
+  z-index: 5;
   display: flex;
   flex-direction: column;
   justify-content: stretch;
   height: 100%;
   position: relative;
   margin: 0 5px;
-  background: #2196f3;
+  background: var(--hmcont);
+  -webkit-backdrop-filter: blur(var(--fillterBlur));
+          backdrop-filter: blur(var(--fillterBlur));
   -webkit-box-reflect: below 0px linear-gradient(transparent 30%, rgba(0, 0, 0, 0.2666666667));
 }
-.ele-dclock-container .ele-dclock #time .cell-cont#scont {
-  background: #ff006a;
+.ele-dclock-container .ele-dclock #time .cell-cont.scont {
+  background: var(--scont);
 }
 .ele-dclock-container .ele-dclock #time .cell-cont .tag {
-  color: #fff;
+  color: var(--fontColor);
 }
 .ele-dclock-container .ele-dclock #time .cell-cont .cell {
   padding: 0 1rem;
   text-align: center;
-  color: #fff;
+  color: var(--fontColor);
   font-size: 3em;
   vertical-align: middle;
 }
@@ -89,12 +123,12 @@
 .ele-dclock-container .ele-dclock #time .cell-cont #stag, .ele-dclock-container .ele-dclock #time .cell-cont #htag, .ele-dclock-container .ele-dclock #time .cell-cont #mtag {
   vertical-align: middle;
   width: 100%;
-  background: #127fd6;
+  background: var(--hmtag);
   text-align: center;
   flex: auto;
 }
 .ele-dclock-container .ele-dclock #time .cell-cont #stag {
-  background: #cc0055;
+  background: var(--stag);
 }
 
 @-webkit-keyframes seconds_anim {
@@ -124,5 +158,27 @@
   }
   100% {
     transform: scale(1.2);
+  }
+}
+@-webkit-keyframes back_circles {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes back_circles {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
   }
 }/*# sourceMappingURL=eledClock_style.css.map */

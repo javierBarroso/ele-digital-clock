@@ -27,6 +27,8 @@ along with Ele Digital Clock. If not, see https://www.gnu.org/licenses/gpl-3.0.h
  * Elementor tested up to: 3.10.2
  * Elementor pro tested up to: 3.10.1
  */
+/**test */
+
 
 
 if(!defined('ABSPATH')){
@@ -45,7 +47,6 @@ function eledc_digital_clock(){
     require_once(__DIR__.'/includes/ele-digital-clock-plugin.php');
     if (class_exists('Eledc_Digital_Clock_Plugin')){
         Eledc_Digital_Clock_Plugin::instance();
-        ////echo '<i class="ele_dclock_widget_icon"></i>';
     }
 
 }

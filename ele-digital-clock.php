@@ -27,6 +27,7 @@ along with Ele Digital Clock. If not, see https://www.gnu.org/licenses/gpl-3.0.h
  * Elementor tested up to: 3.10.2
  * Elementor pro tested up to: 3.10.1
  */
+/**master */
 
 
 

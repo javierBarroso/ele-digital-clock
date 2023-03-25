@@ -2,6 +2,18 @@
   font-family: "Poppins-eledc";
   src: url("../font/Poppins-Light.woff");
 }
+html {
+  --hmcont: #2196f3;
+  --scont: #ff006a;
+  --hmtag: #127fd6;
+  --stag: #cc0055;
+  --fillterBlur: 0;
+  --showBackGround: hidden;
+  --backgroundFigureBorderRadius: 100px;
+  --fontColor: #fff;
+  --titleColor: #333;
+}
+
 .ele-dclock-container {
   display: flex;
   justify-content: center;
@@ -37,7 +49,7 @@
   width: 100%;
   z-index: 10;
 }
-.ele-dclock-container .ele-dclock #time {
+.ele-dclock-container .ele-dclock .time {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -50,7 +62,7 @@
   --backgroundFigureBorderRadius: 100px;
   --fontColor: #fff;
 }
-.ele-dclock-container .ele-dclock #time::after {
+.ele-dclock-container .ele-dclock .time::after {
   visibility: var(--showBackGround);
   content: "";
   z-index: inherit;
@@ -62,10 +74,10 @@
   position: absolute;
   top: 0;
   left: 0;
-  -webkit-animation: back_circles 3s ease-in-out infinite;
-          animation: back_circles 3s ease-in-out infinite;
+  -webkit-animation: back_circles 2s ease-in-out infinite;
+          animation: back_circles 2s ease-in-out infinite;
 }
-.ele-dclock-container .ele-dclock #time::before {
+.ele-dclock-container .ele-dclock .time::before {
   visibility: var(--showBackGround);
   content: "";
   background: #127fd6;
@@ -79,7 +91,7 @@
   -webkit-animation: back_circles 5s ease-in-out infinite;
           animation: back_circles 5s ease-in-out infinite;
 }
-.ele-dclock-container .ele-dclock #time .cell-cont {
+.ele-dclock-container .ele-dclock .time .cell-cont {
   z-index: 5;
   display: flex;
   flex-direction: column;
@@ -87,25 +99,67 @@
   height: 100%;
   position: relative;
   margin: 0 5px;
-  background: var(--hmcont);
-  -webkit-backdrop-filter: blur(var(--fillterBlur));
-          backdrop-filter: blur(var(--fillterBlur));
   -webkit-box-reflect: below 0px linear-gradient(transparent 30%, rgba(0, 0, 0, 0.2666666667));
+  background: var(--hmcont);
+  width: 150px;
 }
-.ele-dclock-container .ele-dclock #time .cell-cont.scont {
+.ele-dclock-container .ele-dclock .time .cell-cont.glass-style-preset {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(25px);
+          backdrop-filter: blur(25px);
+}
+.ele-dclock-container .ele-dclock .time .cell-cont.glass-style-preset.scont {
+  background: rgba(255, 255, 255, 0.2);
+}
+.ele-dclock-container .ele-dclock .time .cell-cont.glass-style-preset .stag, .ele-dclock-container .ele-dclock .time .cell-cont.glass-style-preset .htag, .ele-dclock-container .ele-dclock .time .cell-cont.glass-style-preset .mtag {
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(25px);
+          backdrop-filter: blur(25px);
+}
+.ele-dclock-container .ele-dclock .time .cell-cont.glass-style-preset * {
+  color: #fff;
+}
+.ele-dclock-container .ele-dclock .time .cell-cont.light-style-preset {
+  background: #eee;
+}
+.ele-dclock-container .ele-dclock .time .cell-cont.light-style-preset .stag, .ele-dclock-container .ele-dclock .time .cell-cont.light-style-preset .htag, .ele-dclock-container .ele-dclock .time .cell-cont.light-style-preset .mtag {
+  background: rgba(255, 255, 255, 0.2);
+}
+.ele-dclock-container .ele-dclock .time .cell-cont.light-style-preset.scont {
+  background: #eee;
+}
+.ele-dclock-container .ele-dclock .time .cell-cont.light-style-preset * {
+  color: #333333;
+}
+.ele-dclock-container .ele-dclock .time .cell-cont.dark-style-preset {
+  background: #333;
+}
+.ele-dclock-container .ele-dclock .time .cell-cont.dark-style-preset * {
+  color: #eee;
+}
+.ele-dclock-container .ele-dclock .time .cell-cont.dark-style-preset.scont {
+  background: #333;
+}
+.ele-dclock-container .ele-dclock .time .cell-cont.dark-style-preset .stag, .ele-dclock-container .ele-dclock .time .cell-cont.dark-style-preset .htag, .ele-dclock-container .ele-dclock .time .cell-cont.dark-style-preset .mtag {
+  background: rgba(255, 255, 255, 0.2);
+}
+.ele-dclock-container .ele-dclock .time .cell-cont.scont {
   background: var(--scont);
 }
-.ele-dclock-container .ele-dclock #time .cell-cont .tag {
+.ele-dclock-container .ele-dclock .time .cell-cont .tag {
   color: var(--fontColor);
 }
-.ele-dclock-container .ele-dclock #time .cell-cont .cell {
-  padding: 0 1rem;
+.ele-dclock-container .ele-dclock .time .cell-cont .cell {
+  padding: 1rem 1rem;
   text-align: center;
   color: var(--fontColor);
   font-size: 3em;
   vertical-align: middle;
 }
-.ele-dclock-container .ele-dclock #time .cell-cont .cell#hour span {
+.ele-dclock-container .ele-dclock .time .cell-cont .cell.hour span {
   background-color: transparent;
   padding: 0.5rem;
   height: -webkit-fit-content;
@@ -115,20 +169,72 @@
   left: 0;
   top: 0;
 }
-.ele-dclock-container .ele-dclock #time .cell-cont .cell#second {
+.ele-dclock-container .ele-dclock .time .cell-cont .cell.second {
   transform: scale(1.2);
-  -webkit-animation: seconds_anim 1s infinite;
-          animation: seconds_anim 1s infinite;
 }
-.ele-dclock-container .ele-dclock #time .cell-cont #stag, .ele-dclock-container .ele-dclock #time .cell-cont #htag, .ele-dclock-container .ele-dclock #time .cell-cont #mtag {
+.ele-dclock-container .ele-dclock .time .cell-cont .stag, .ele-dclock-container .ele-dclock .time .cell-cont .htag, .ele-dclock-container .ele-dclock .time .cell-cont .mtag {
   vertical-align: middle;
   width: 100%;
   background: var(--hmtag);
   text-align: center;
   flex: auto;
 }
-.ele-dclock-container .ele-dclock #time .cell-cont #stag {
+.ele-dclock-container .ele-dclock .time .cell-cont .stag {
   background: var(--stag);
+}
+.ele-dclock-container.clock-02 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ele-dclock-container.clock-02 h2 {
+  position: relative;
+  display: block;
+  text-align: center;
+  margin: 10px 0;
+  font-weight: 300;
+  color: #333333;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  font-size: 1.5em;
+  width: 100%;
+  z-index: 10;
+}
+.ele-dclock-container.clock-02 .ele-dclock {
+  display: flex;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(24px);
+          backdrop-filter: blur(24px);
+  padding: 2.5rem 2.5rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 1px rgba(255, 255, 255, 0.3333333333) solid;
+  border-radius: 10px;
+  gap: 5px;
+}
+.ele-dclock-container.clock-02 .ele-dclock * {
+  color: #fff;
+}
+.ele-dclock-container.clock-02 .ele-dclock div {
+  font-size: 80px;
+  color: #fff;
+}
+.ele-dclock-container.clock-02 .ele-dclock .cell-cont {
+  font-size: 80px;
+  background: rgba(var(--hmcont), 0.1);
+  -webkit-backdrop-filter: blur(var(--fillterBlur));
+          backdrop-filter: blur(var(--fillterBlur));
+  border: 1px rgba(255, 255, 255, 0.3333333333) solid;
+  border-radius: 10px;
+  width: 150px;
+  text-align: center;
+}
+.ele-dclock-container.clock-02 .ele-dclock .cell-cont .tag {
+  font-size: 25px;
+}
+.ele-dclock-container.clock-02 .ele-dclock .cell-cont div {
+  color: #fff;
 }
 
 @-webkit-keyframes seconds_anim {

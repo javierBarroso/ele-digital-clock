@@ -1,9 +1,10 @@
 
 function ele_digital_clock(){
 
-    let hours = document.querySelector('#hour');
-    let minutes = document.querySelector('#minute');
-    let seconds = document.querySelector('#second');
+    let hours = document.querySelectorAll('.hour');
+    let minutes = document.querySelectorAll('.minute');
+    let seconds = document.querySelectorAll('.second');
+    let am_tags = document.querySelectorAll('.am-tag');
 
     let h = new Date().getHours();
     let m = new Date().getMinutes();
@@ -20,14 +21,28 @@ function ele_digital_clock(){
         am = am == 'AM' ? 'PM' : 'AM'
     }
 
+    console.log(am)
+
     h = ( h < 10 ) ? '0' + h : h;
     m = ( m < 10 ) ? '0' + m : m;
     s = ( s < 10 ) ? '0' + s : s;
 
+    hours.forEach(hour => {
+        hour.innerHTML = h;
+    });
+
+    minutes.forEach(minute => {
+        minute.innerHTML = m;
+    });
+
+    seconds.forEach(second => {
+        second.innerHTML = s;
+    });
+
+    am_tags.forEach(am_tag => {
+        am_tag.innerHTML = am;
+    });
     
-    hours.innerHTML = h + '<span id="am-tag">' + am + '</span>';
-    minutes.innerHTML = m;
-    seconds.innerHTML = s;
 }
 
 /* const setProp = (el, prop, value) => el.style.setProperty(prop, value) 

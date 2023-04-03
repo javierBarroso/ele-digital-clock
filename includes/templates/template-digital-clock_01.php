@@ -18,21 +18,20 @@
 ?>
 
 
-
 <section class="ele-dclock-container">
-    
-    <div class="ele-dclock" id="card">
+    <div class="ele-dclock <?= esc_attr( $style_preset ) ?>" id="card">
         <h2 class="clock-title"><?= esc_html($settings['head-text']) ?></h2>
         <div class="time">
-            <div class="cell-cont hcont <?= esc_attr( $style_preset ) ?>">
-                <div class="cell hour">00<span class="am-tag">PM</span></div>
+            <div class="cell-cont hcont">
+                <div class="cell hour">00</div>
+                <span class="am-tag">PM</span>
                 <div class="tag htag"><?= esc_html($settings['hour-text']) ?></div>
             </div>
-            <div class="cell-cont mcont <?= esc_attr( $style_preset ) ?>">
+            <div class="cell-cont mcont">
                 <div class="cell minute">00</div>
                 <div class="tag mtag"><?= esc_html($settings['minute-text']) ?></div>
             </div>
-            <div class="cell-cont scont <?= esc_attr( $style_preset ) ?>">
+            <div class="cell-cont scont">
                 <div class="cell second">00</div>
                 <div class="tag stag"><?= esc_html($settings['second-text']) ?></div>
             </div>

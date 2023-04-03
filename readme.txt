@@ -1,7 +1,8 @@
 === Ele Digital Clock ===
-Tags: Elementor, Digital Clock, widget
+Contributors: javierbarroso
+Tags: Elementor, Digital Clock, widget, clock
 Requires at least: 5.9
-Tested up to: 6.1.1
+Tested up to: 6.2.0
 Stable tag: 1.0.0
 Requires PHP: 7.0
 License: GPLv3 or later
@@ -9,71 +10,55 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 This plugin is a widget for Elementor that will display a fancy and customizable digital clock.
 
+== Description ==
+
+Ele Digital Clock is an Elementor widget that will allow you to create and personalize digital clock in an easy and intuitive way. In addition to the different clock models you can create, this tool also comes with predefined style templates with predefined colors and contrasts.
 
 
-# Free Features
+# Features
 
--	Flat and Deep (3D) Flip Effect
--	Google Fonts Ready
--	Font Awesome 6 Icons Ready
+-	2 types of digital clocks layouts
 -	Responsive Design
 -	Individual Properties for Tables and Mobile
 -	Live Updated Changes
--	Draggable sections
--	Customizable link Button
--	+18 Hover Animation for Button
--	Customizable Tipography
--	Box Sahdow Effects
--	Border Control
--	Flip either solid colors background or images
--	+17 Proffesional layouts
+-	Customizable Typography
+-	Color Control
+-	Size Control
+-	Content Control
 
-# Premium Features
 
--	Customize the duration of the animation.
--	Customize the Front Background, Border, and Heading Color.
--	Customize the Back Description Color.
--	Customize the Button Hover and Border Color.
-
-[UPGRADE TO PRO](https://wirenomads.com/flipbox-image-for-wordpress/)
-
-https://youtu.be/inBF6yGj-yg
-
-== Integration with Elementor ==
-Are you an Elementor user? Calm down! We've got you covered :) Starting with version 1.14, our plugin comes with an integration Widget for Elementor, which will allow you to treat your professional Flipboxes like any other Elementor's Element, including live preview in the Frontend Editor.
-
-https://youtu.be/E-gjRTfYCQg
 
 # How to use it
 
-Every time you create a new Flip Box, a unique shorcode [wn-flipbox id = "x"] is automatically generated, just copy and paste your flipbox shortcode on the pages where you want to show the flipbox.
+Just drag and drop the widget to your page, select the clock layout of your preference, use one of our style presets or customize the default theme your own way.
 
 == Installation ==
 
-1. Upload the plugin folder 'wn-flipbox-pro' to the '/wp-content/plugins/' directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin folder 'ele-digital-clock' to the '/wp-content/plugins/' directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
 
 == Frequently Asked Questions ==
 
-= Is WN Flipbox Pro Responsive? =
+= Is Ele Digital Clock Responsive? =
 
-YES, you can customize how you want flipboxes to look on desktops, tablets, and mobile devices.
+YES, you can customize how you want the clock to look on desktops, tablets, and mobile devices.
 
-= Is the plugin compatible with Page Builders, including: Elementor, Beaver, Divi, etc?  =
+= Can I display multiple clocks on the same page?  =
 
-YES, our plugin is based on shortcodes, which has total integrations with all page builders. Beside we have developed a widget of the plugin for Elementor's User than comes integrated since version 1.14.
-
-= Can I display multiple flip boxes on the same page?  =
-
-YES, you can create and use as many flip boxes as you want, doesn't matter if it is on the same page or different ones.
+YES, you can use as many clocks as you want, doesn't matter if it is on the same page or different ones.
 
 = The plugin is missing a feature, can you add it? =
 
-Sure! We improve WN Flipbox Pro continuously to fit your needs, if you have a feature request or feedback [shot us a line](https://wirenomads.com/#contact).
+Sure! We improve Ele Digital Clock continuously to fit your needs, if you have a feature request or feedback [shot us a line] abby.javi.infox5@gmail.com.
 
 == Screenshots ==
 
 == Changelog ==
 
-= 1.0 =
+= 1.2.0 =
+* Bug fixes
+* Clock layout selector added
+* Clock theme selector added
+
+= 1.0.0 =
 * Initial release.

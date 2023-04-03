@@ -5,7 +5,9 @@ use Elementor\Controls_Manager;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
 
+
 if (!class_exists('Eledc_Digital_Clock_Widget')) {
+
 
     class Eledc_Digital_Clock_Widget extends Widget_Base
     {
@@ -44,6 +46,16 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
             return ['keyword', 'keyword'];
         }
 
+        public function set_time_zone()
+        {
+
+            foreach (ELE_DIGITAL_CLOCK_TIMEZONE as $key => $timezone) {
+                $timezone_list[$timezone[0]['offset']] = $timezone[0]['timezone_id'];
+            }
+
+            return $timezone_list;
+        }
+
         protected function register_controls()
         {
 
@@ -58,12 +70,12 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
             $this->add_control(
                 'clock_type',
                 [
-                    'label' => esc_html__( 'Clock type', 'ele-digital-clock' ),
+                    'label' => esc_html__('Clock type', 'ele-digital-clock'),
                     'type' => \Elementor\Controls_Manager::SELECT,
                     'default' => 'default',
                     'options' => [
-                        'default'  => esc_html__( 'Vibrant color clock', 'ele-digital-clock' ),
-                        'glass' => esc_html__( 'Glass clock', 'ele-digital-clock' ),
+                        'default'  => esc_html__('Clock 01', 'ele-digital-clock'),
+                        'clock-02' => esc_html__('Clock 02', 'ele-digital-clock'),
                     ],
                 ]
             );
@@ -152,12 +164,13 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                     'default' => 'center',
                     'selectors' => [
                         '{{WRAPPER}} .ele-dclock-container' => 'justify-content: {{VALUE}}',
+                        '{{WRAPPER}} .clock-02' => 'justify-content: {{VALUE}}',
                     ],
                 ]
             );
 
             $this->end_controls_section();
-            
+
             $this->start_controls_section(
                 'style_presets_section',
                 [
@@ -169,31 +182,14 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
             $this->add_control(
                 'style_presets',
                 [
-                    'label' => esc_html__( 'Style Presets', 'ele-digital-clock' ),
+                    'label' => esc_html__('Style Presets', 'ele-digital-clock'),
                     'type' => \Elementor\Controls_Manager::SELECT,
                     'default' => 'default',
                     'options' => [
-                        'default'  => esc_html__( 'Default', 'ele-digital-clock' ),
-                        'glass' => esc_html__( 'Glass', 'ele-digital-clock' ),
-                        'dark' => esc_html__( 'Dark', 'ele-digital-clock' ),
-                        'light' => esc_html__( 'Light', 'ele-digital-clock' ),
-                    ],
-                ]
-            );
-
-            $this->add_control(
-                'background_style_presets',
-                [
-                    'label' => esc_html__( 'BG Style Presets', 'ele-digital-clock' ),
-                    'type' => \Elementor\Controls_Manager::SELECT,
-                    'default' => 'none',
-                    'options' => [
-                        'none'  => esc_html__( 'None', 'ele-digital-clock' ),
-                        '--showBackGround: visible; --backgroundFigureBorderRadius: 100px;' => esc_html__( 'Color Balls', 'ele-digital-clock' ),
-                        '--showBackGround: visible; --backgroundFigureBorderRadius: 0px;' => esc_html__( 'Color Square', 'ele-digital-clock' ),
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} #time' => '{{VALUE}};',
+                        'default'  => esc_html__('Custom Theme', 'ele-digital-clock'),
+                        'glass' => esc_html__('Glass Theme', 'ele-digital-clock'),
+                        'dark' => esc_html__('Dark Theme', 'ele-digital-clock'),
+                        'light' => esc_html__('Light Theme', 'ele-digital-clock'),
                     ],
                 ]
             );
@@ -205,21 +201,25 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                 [
                     'label' => esc_html__('Font', 'ele-digital-clock'),
                     'tab' => Controls_Manager::TAB_STYLE,
+                    'condition' => [
+                    ],
                 ]
             );
 
             $this->add_group_control(
                 Group_Control_Typography::get_type(),
                 [
-                    'label' => esc_html__('Header Font', 'ele-digital-clock'),
+                    'label' => esc_html__('Title Font', 'ele-digital-clock'),
                     'name' => 'typography_header',
                     'global' => [
                         'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                     ],
+                    'condition' => [
+                        'clock_type' => ['default', 'clock-02'],
+                    ],
                     'selector' => '{{WRAPPER}} .clock-title',
                     'fields_options' => [
                         'typography' => ['default' => 'yes'],
-                        'font_size' => ['default' => ['size' => 25]],
                         'font_weight' => ['default' => 200],
                         'font_family' => ['default' => 'Poppins-eledc'],
                     ],
@@ -237,7 +237,7 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                     'selector' => '{{WRAPPER}} .am-tag',
                     'fields_options' => [
                         'typography' => ['default' => 'yes'],
-                        'font_size' => ['default' => ['size' => 14]],
+                        'font_size' => ['default' => ['size' => 20]],
                         'font_weight' => ['default' => 200],
                         'line-height' => ['default' => 1],
                         'font_family' => ['default' => 'Poppins-eledc'],
@@ -251,12 +251,15 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                     'label' => esc_html__('Clock Font', 'ele-digital-clock'),
                     'name' => 'typography_clock',
                     'global' => [
-                        'default' => Global_Typography::TYPOGRAPHY_PRIMARY, 'size' => 25
+                        'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                     ],
-                    'selector' => '{{WRAPPER}} .cell-cont .cell',
+                    'selector' => '{{WRAPPER}} .cell-cont .cell, {{WRAPPER}} .dot',
+                    'condition' => [
+                        'clock_type' => ['default', 'clock-02'],
+                    ],
                     'fields_options' => [
                         'typography' => ['default' => 'yes'],
-                        'font_size' => ['default' => ['size' => 65]],
+                        'font_size' => ['default' => ['size' => 50]],
                         'font_weight' => ['default' => 200],
                         'font_family' => ['default' => 'Poppins-eledc'],
                     ],
@@ -273,6 +276,9 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                     ],
                     'selector' => '{{WRAPPER}} .cell-cont .tag',
                     'separator' => 'before',
+                    'condition' => [
+                        'clock_type' => ['default', 'clock-02'],
+                    ],
                     'fields_options' => [
                         'typography' => ['default' => 'yes'],
                         'font_size' => ['default' => ['size' => 14]],
@@ -299,9 +305,8 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => ['px'],
                     'range' => ['px' => ['min' => 5, 'max' => 900]],
-                    'default' => [
-                        'unit' => 'px',
-                        'size' => 150,
+                    'condition' => [
+                        'clock_type' => ['default', 'clock-02'],
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .cell-cont' => 'width:{{SIZE}}{{UNIT}}',
@@ -315,9 +320,8 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => ['px'],
                     'range' => ['px' => ['min' => 0, 'max' => 100]],
-                    'default' => [
-                        'unit' => 'px',
-                        'size' => 14,
+                    'condition' => [
+                        'clock_type' => ['default', 'clock-02'],
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .cell-cont .cell' => 'padding:{{SIZE}}{{UNIT}} 0',
@@ -332,9 +336,8 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => ['px'],
                     'range' => ['px' => ['min' => 0, 'max' => 50]],
-                    'default' => [
-                        'unit' => 'px',
-                        'size' => 5,
+                    'condition' => [
+                        'clock_type' => ['default'],
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .cell-cont .tag' => 'padding:{{SIZE}}{{UNIT}} 0',
@@ -355,11 +358,14 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
             $this->add_control(
                 'header-color',
                 [
-                    'label' => esc_html('Header Color', 'ele-digital-clock'),
+                    'label' => esc_html('Title Color', 'ele-digital-clock'),
                     'type' => Controls_Manager::COLOR,
                     'default' => '#333333',
+                    'condition' => [
+                        'clock_type' => ['default', 'clock-02'],
+                    ],
                     'selectors' => [
-                        '{{WRAPPER}} .ele-dclock h2' => 'color:{{VALUE}}'
+                        '{{WRAPPER}} .ele-dclock-container' => '--titleColor:{{VALUE}}'
                     ]
                 ]
             );
@@ -369,9 +375,13 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                 [
                     'label' => esc_html('Font Color', 'ele-digital-clock'),
                     'type' => Controls_Manager::COLOR,
+                    'condition' => [
+                        'clock_type' => ['default', 'clock-02'],
+                        'style_presets' => 'default',
+                    ],
                     'selectors' => [
-                        '{{WRAPPER}} html' => '--fontColor: {{VALUE}}',
-                    
+                        '{{WRAPPER}} .ele-dclock-container' => '--fontColor: {{VALUE}}',
+
                     ]
                 ]
             );
@@ -382,8 +392,12 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                     'label' => esc_html('Hour Background Color', 'ele-digital-clock'),
                     'type' => Controls_Manager::COLOR,
                     'default' => null,
+                    'condition' => [
+                        'clock_type' => 'default',
+                        'style_presets' => 'default',
+                    ],
                     'selectors' => [
-                        '{{WRAPPER}} .hcont' => 'background:{{VALUE}}'
+                        '{{WRAPPER}} .ele-dclock-container' => '--hcont:{{VALUE}}'
                     ]
                 ]
             );
@@ -393,8 +407,12 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                     'label' => esc_html('Minute Background Color', 'ele-digital-clock'),
                     'type' => Controls_Manager::COLOR,
                     'default' => null,
+                    'condition' => [
+                        'clock_type' => 'default',
+                        'style_presets' => 'default',
+                    ],
                     'selectors' => [
-                        '{{WRAPPER}} .mcont' => 'background:{{VALUE}}'
+                        '{{WRAPPER}} .ele-dclock-container' => '--mcont:{{VALUE}}'
                     ]
                 ]
             );
@@ -404,8 +422,12 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                     'label' => esc_html('Second Background Color', 'ele-digital-clock'),
                     'type' => Controls_Manager::COLOR,
                     'default' => null,
+                    'condition' => [
+                        'clock_type' => 'default',
+                        'style_presets' => 'default',
+                    ],
                     'selectors' => [
-                        '{{WRAPPER}} .scont' => 'background:{{VALUE}}'
+                        '{{WRAPPER}} .ele-dclock-container' => '--scont:{{VALUE}}'
                     ]
                 ]
             );
@@ -416,9 +438,10 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                     'type' => Controls_Manager::COLOR,
                     'condition' => [
                         'clock_type' => 'default',
+                        'style_presets' => 'default',
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .htag' => 'background-color:{{VALUE}}'
+                        '{{WRAPPER}} .ele-dclock-container' => '--htag:{{VALUE}}'
                     ]
                 ]
             );
@@ -429,9 +452,10 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                     'type' => Controls_Manager::COLOR,
                     'condition' => [
                         'clock_type' => 'default',
+                        'style_presets' => 'default',
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mtag' => 'background-color:{{VALUE}}'
+                        '{{WRAPPER}} .ele-dclock-container' => '--mtag:{{VALUE}}'
                     ]
                 ]
             );
@@ -442,50 +466,64 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                     'type' => Controls_Manager::COLOR,
                     'condition' => [
                         'clock_type' => 'default',
+                        'style_presets' => 'default',
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .stag' => 'background-color:{{VALUE}}'
+                        '{{WRAPPER}} .ele-dclock-container' => '--stag:{{VALUE}}'
                     ]
                 ]
             );
             $this->add_control(
-                'clock-background-color',
+                'clock-background-color-clock-02',
                 [
                     'label' => esc_html('Clock Background Color', 'ele-digital-clock'),
                     'type' => Controls_Manager::COLOR,
                     'condition' => [
-                        'clock_type' => 'glass',
+                        'clock_type' => 'clock-02',
+                        'style_presets' => 'default',
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .ele-dclock' => 'background:{{VALUE}}'
+                        '{{WRAPPER}} .clock-02' => '--clockBackground:{{VALUE}}'
                     ]
                 ]
             );
-
+            $this->add_control(
+                'cell-background-color-clock-02',
+                [
+                    'label' => esc_html('Cell Background Color', 'ele-digital-clock'),
+                    'type' => Controls_Manager::COLOR,
+                    'condition' => [
+                        'clock_type' => 'clock-02',
+                        'style_presets' => 'default',
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .clock-02' => '--cellBackground:{{VALUE}}'
+                    ]
+                ]
+            );
 
             $this->end_controls_section();
         }
 
         protected function render()
         {
-            echo '<script>setInterval(ele_digital_clock, 1000);</script>';
-
             $settings = $this->get_settings_for_display();
 
             switch ($settings['clock_type']) {
                 case 'default':
-                    
+
                     include ELE_DIGITAL_CLOCK_PATH . 'includes/templates/template-digital-clock_01.php';
                     break;
-                case 'glass':
-                    
+
+                case 'clock-02':
+
                     include ELE_DIGITAL_CLOCK_PATH . 'includes/templates/template-digital-clock_02.php';
                     break;
+
                 default:
                     # code...
                     break;
             }
-
         }
     }
 }

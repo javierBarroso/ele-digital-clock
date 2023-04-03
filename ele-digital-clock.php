@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Ele Digital Clock
  * Description: Fancy and customizable Digital Clock widgets for Elementor.
- * Version:     1.0.0
+ * Version:     1.2.0
  * Author:      Javier Barroso
  * Author URI:  https://profiles.wordpress.org/javierbarroso/
  */
@@ -34,6 +34,7 @@ along with Ele Digital Clock. If not, see https://www.gnu.org/licenses/gpl-3.0.h
 
 
 
+
 if(!defined('ABSPATH')){
     exit();
 }
@@ -43,6 +44,9 @@ if(!defined('ELE_DIGITAL_CLOCK_URL')){
 }
 if(!defined('ELE_DIGITAL_CLOCK_PATH')){
     define('ELE_DIGITAL_CLOCK_PATH', plugin_dir_path(__FILE__));
+}
+if(!defined('ELE_DIGITAL_CLOCK_TIMEZONE')){
+    define('ELE_DIGITAL_CLOCK_TIMEZONE', DateTimeZone::listAbbreviations());
 }
 
 function eledc_digital_clock(){

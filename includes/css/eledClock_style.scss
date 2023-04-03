@@ -3,25 +3,24 @@
     src: url('../font/Poppins-Light.woff');
 }
 
-html{
-    --hmcont: #2196f3;
+.ele-dclock-container{
+    --hcont: #2196f3;
+    --mcont: #2196f3;
     --scont: #ff006a;
-    --hmtag: #127fd6;
+    --htag: #127fd6;
+    --mtag: #127fd6;
     --stag: #cc0055;
     --fillterBlur: 0;
     --showBackGround: hidden;
     --backgroundFigureBorderRadius: 100px;
     --fontColor: #fff;
     --titleColor: #333;
-}
 
 
-
-.ele-dclock-container{
+    
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: fit-content;
     width: 100%;
     *{
         margin: 0;
@@ -33,16 +32,16 @@ html{
     .ele-dclock{
         width: fit-content;
 	    transition: all .3s linear 0s;
-        h2{
+        .clock-title{
             position: relative;
             display: block;
             text-align: center;
             margin: 10px 0;
-            font-weight: 300;
-            color: #333333;
+            font-weight: 200;
+            color: var(--titleColor);
             text-transform: uppercase;
             letter-spacing: 0.4em;
-            font-size: 0.8em;
+            font-size: 20px;
             width: 100%;
             z-index: 10;
         }
@@ -50,41 +49,6 @@ html{
             display: flex;
             justify-content: center;
             width: 100%;
-            --hmcont: #2196f3;
-            --scont: #ff006a;
-            --hmtag: #127fd6;
-            --stag: #cc0055;
-            --fillterBlur: 0;
-            --showBackGround: hidden;
-            --backgroundFigureBorderRadius: 100px;
-            --fontColor: #fff;
-            &::after{
-                visibility: var(--showBackGround);
-                content: "";
-                z-index: inherit;
-                background: #ff006a;
-                height: 150px;
-                width: 150px;
-                aspect-ratio: 1;
-                border-radius: var(--backgroundFigureBorderRadius);
-                position: absolute;
-                top: 0;
-                left: 0;
-                animation: back_circles  random(10) +s ease-in-out infinite;
-            }
-            &::before{
-                visibility: var(--showBackGround);
-                content: "";
-                background: #127fd6;
-                height: 100px;
-                width: 100px;
-                aspect-ratio: 1;
-                border-radius: var(--backgroundFigureBorderRadius);
-                position: absolute;
-                bottom: 0;
-                right: 0;
-                animation: back_circles 5s ease-in-out infinite;
-            }
             .cell-cont{
                 z-index: 5;
                 display: flex;
@@ -94,61 +58,35 @@ html{
                 position: relative;
                 margin: 0 5px;
                 -webkit-box-reflect: below 0px linear-gradient(transparent 30%, #0004);
-                background: var(--hmcont);
-                width: 150px;
-                &.glass-style-preset{
-                    background: rgba($color: #fff, $alpha: 0.2);
-                    border: 1px solid rgba($color: #fff, $alpha: 0.15);
-                    border-top: 1px solid rgba($color: #fff, $alpha: 0.5);
-                    border-left: 1px solid rgba($color: #fff, $alpha: 0.5);
-                    backdrop-filter: blur(25px);
-                    
-                    &.scont{
-                        background: rgba($color: #fff, $alpha: 0.2);
-                    }
-                    .stag, .htag, .mtag{
-                        background: rgba($color: #fff, $alpha: 0.2);
-                        backdrop-filter: blur(25px);
-                    }
-                    *{
-                        color: #fff;
-                    }
+                width: 120px;
+                font-size: 50px;
+                &.hcont{
+                    background: var(--hcont);
                 }
-                &.light-style-preset{
-                    background: #eee;
-                    .stag, .htag, .mtag{
-                        background: rgba($color: #fff, $alpha: 0.2);
-                    }
-                    &.scont{
-                        background: #eee;
-                    }
-                    *{
-                        color: #333333;
-                    }
-                }
-                &.dark-style-preset{
-                    background: #333;
-                    *{
-                        color: #eee;
-                    }
-                    &.scont{
-                        background: #333;
-                    }
-                    .stag, .htag, .mtag{
-                        background: rgba($color: #fff, $alpha: 0.2);
-                    }
+                &.mcont{
+                    background: var(--mcont);
                 }
                 &.scont{
                     background: var(--scont);
                 }
+                .htag{
+                    background: var(--htag);
+                }
+                .mtag{
+                    background: var(--mtag);
+                }
+                .stag{
+                    background: var(--stag);
+                }
                 .tag{
                     color: var(--fontColor);
+                    padding: 5px 0;
+                    font-size: 14px;
                 }
                 .cell{
-                    padding: 1rem 1rem;
+                    padding: 5px 0;
                     text-align: center;
                     color: var(--fontColor);
-                    font-size: 3em;
                     vertical-align: middle;
                     &.hour{
                         span{
@@ -160,103 +98,217 @@ html{
                             top: 0;
                         }
                     }
-                    &.second{
-                        transform: scale(1.2);
-                    }
                 }
                 .stag, .htag, .mtag{
                     vertical-align: middle;
                     width: 100%;
-                    background: var(--hmtag);
                     text-align: center;
                     flex: auto;
                 }
-                .stag{
-                    background: var(--stag);
+                .am-tag{
+                    position: absolute;
+                    right: 10px;
+                    top: 0px;
+                    color: var(--fontColor);
+                    font-size: 14px;
+                }
+            }
+        }
+        &.glass-style-preset{
+            .clock-title{
+                color: var(--titleColor);
+            }
+            .time .cell-cont{
+                *{
+                    font-weight: inherit;
+                    font-family: inherit;
+                }
+                background: rgba($color: #fff, $alpha: 0.2);
+                border: 1px solid rgba($color: #fff, $alpha: 0.1);
+                border-top: 1px solid rgba($color: #fff, $alpha: 0.2);
+                border-left: 1px solid rgba($color: #fff, $alpha: 0.2);
+                backdrop-filter: blur(25px);
+                .stag, .htag, .mtag{
+                    background: rgba($color: #fff, $alpha: 0.1);
+                    backdrop-filter: blur(25px);
+                }
+            }
+        }
+        &.light-style-preset{
+            .clock-title{
+                color: var(--titleColor);
+            }
+            .time .cell-cont{
+                
+                background: #eee;
+                .stag, .htag, .mtag{
+                    background: rgba($color: #fff, $alpha: 0.2);
+                }
+                *{
+                    color: #333;
+                    font-family: inherit;
+                    font-weight: inherit;
+                }
+            }
+        }
+        &.dark-style-preset{
+            .clock-title{
+                color: var(--titleColor);
+            }
+            .time .cell-cont{
+
+                background: #333;
+                *{
+                    color: #eee;
+                    font-family: inherit;
+                    font-weight: inherit;
+                }
+                &.scont{
+                    background: #333;
+                }
+                .stag, .htag, .mtag{
+                    background: rgba($color: #fff, $alpha: 0.2);
                 }
             }
         }
     }
 
-    &.clock-02{
+    .clock-02{
+        --clockBackground: #4455f1;
+        --cellBackground: #1f57be;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        h2{
+        .clock-title{
             position: relative;
             display: block;
             text-align: center;
             margin: 10px 0;
-            font-weight: 300;
-            color: #333333;
+            font-weight: 200;
+            color: var(--titleColor);
             text-transform: uppercase;
             letter-spacing: 0.4em;
-            font-size: 1.5em;
+            font-size: 25px;
             width: 100%;
             z-index: 10;
         }
         .ele-dclock{
             display: flex;
-            background: rgba($color: #fff, $alpha: 0.2);
-            backdrop-filter: blur(24px);
+            align-items: center;
+            background: var(--clockBackground);
             padding: 2.5rem 2.5rem;
             width: fit-content;
-            border: 1px #ffffff55 solid;
             border-radius: 10px;
             gap: 5px;
-            *{
-                color: #fff;
+            .cell-cont{
+                width: 110px;
+                text-align: center;
+                background: var(--cellBackground);
+                border-radius: 10px;
+                box-shadow: 0px 10px 10px rgba($color: #000, $alpha: 0.1);
+                .cell{
+                    padding: 5px 0;
+                    font-size: 50px;
+                    color: var(--fontColor);
+                }
+                .tag{
+                    font-size: 14px;
+                }
             }
-            div{
-                
-                font-size: 80px;
-                color: #fff;
+            *{
+                color: var(--fontColor);
+                font-family: 'Poppins-eledc', sans-serif;
+                font-weight: 200;
+            }
+        }
+        &.glass-style-preset{
+            .clock-title{
+                color: var(--titleColor);
+            }
+            position: relative;
+            *{
+                font-family: 'Poppins-eledc', sans-serif;
+                color: var(--fontColor);
+                font-weight: 200;
+            }
+            .am-tag{
+                font-size: 14px;
+            }
+            .dot{
+                font-size: 60px;
             }
             .cell-cont{
-                //padding: .2rem 1rem;
-                font-size: 80px;
-                background: rgba($color: var(--hmcont), $alpha: 0.1);
-                backdrop-filter: blur(var(--fillterBlur));
+                background: rgba($color: #fff, $alpha: 0.1);
+                backdrop-filter: blur(20px);
                 border: 1px #ffffff55 solid;
-                border-radius: 10px;
-                width: 150px;
-                text-align: center;
-                .tag{
-                    font-size: 25px;
-                }
-                div{
-                    color: #fff;
-                }
+                
+            }
+            .ele-dclock{
+                --fontColor: #fff;
+                background: rgba($color: #fff, $alpha: 0.2);
+                backdrop-filter: blur(20px);
+                border: 1px #ffffff55 solid;
+            }
+        }
+        &.dark-style-preset{
+            .clock-title{
+                color: var(--titleColor);
+            }
+            *{
+                font-family: 'Poppins-eledc', sans-serif;
+                color: var(--fontColor);
+                font-weight: 200;
+            }
+            .am-tag{
+                font-size: 20px;
+            }
+            .dot{
+                font-size: 60px;
+            }
+            .am-tag{
+                font-size: 20px;
+            }
+            .cell-cont{
+                background: #222;
+                border: rgba($color: #fff, $alpha: 0.2) solid 1px;
+            }
+            .ele-dclock{
+                border: rgba($color: #fff, $alpha: 0.2) solid 1px;
+                --fontColor: #fff;
+                background: #333;
+            }
+        }
+        &.light-style-preset{
+            .clock-title{
+                color: var(--titleColor);
+            }
+            *{
+                font-family: 'Poppins-eledc', sans-serif;
+                color: var(--fontColor);
+                font-weight: 200;
+            }
+            .am-tag{
+                font-size: 20px;
+            }
+            .dot{
+                font-size: 60px;
+            }
+            .am-tag{
+                font-size: 20px;
+            }
+            .cell-cont{
+                background: #fefefe;
+                border: rgba($color: #fff, $alpha: 0.2) solid 1px;
+                box-shadow: 0px 10px 15px rgba($color: #000, $alpha: 0.3);
+            }
+            .ele-dclock{
+                border: rgba($color: #fff, $alpha: 0.2) solid 1px;
+                --fontColor: #202020;
+                background: #f6f6f6;
             }
         }
     }
 }
 
 
-@keyframes seconds_anim {
-    0%{
-        transform: scale(1);
-    }
-    10%{
-        transform: scale(1);
-    }
-    95%{
-        transform: scale(1);
-    }
-    100%{
-        transform: scale(1.2);
-    }
-}
-
-@keyframes back_circles {
-    0%{
-        transform: translateY(0);
-    }
-    50%{
-        transform: translateY(10px);
-    }
-    100%{
-        transform: translateY(0);
-    }
-}
 

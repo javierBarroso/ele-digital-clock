@@ -259,9 +259,6 @@
                 color: var(--fontColor);
                 font-weight: 200;
             }
-            .am-tag{
-                font-size: 20px;
-            }
             .dot{
                 font-size: 60px;
             }
@@ -287,9 +284,6 @@
                 color: var(--fontColor);
                 font-weight: 200;
             }
-            .am-tag{
-                font-size: 20px;
-            }
             .dot{
                 font-size: 60px;
             }
@@ -305,6 +299,235 @@
                 border: rgba($color: #fff, $alpha: 0.2) solid 1px;
                 --fontColor: #202020;
                 background: #f6f6f6;
+            }
+        }
+    }
+
+    .clock-03{
+        --clockBackground: #6978cd;
+        --cellBackground: #685cb5;
+        --hColor: rgb(255, 39, 89);
+        --mColor: rgb(255, 172, 39);
+        --sColor: rgb(183, 255, 39);
+        --cellSize: 150px;
+        &.glass-style-preset{
+            .ele-dclock{
+                background: rgba($color: #fff, $alpha: 0.2);
+                backdrop-filter: blur(20px);
+                border: 1px #ffffff55 solid;
+                .cell-cont{
+                    svg{
+                        circle{
+                            fill: rgba($color: #fff, $alpha: 0.1);
+                            //border: 1px #ffffff55 solid;
+                            stroke: #ffffff19;
+                            stroke-width: 2px;
+                            backdrop-filter: blur(20px);
+                            &:nth-child(2){
+                                fill: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.dark-style-preset{
+             .ele-dclock{
+                background: #222;
+                border: 1px #ffffff55 solid;
+                .cell-cont{
+                    svg{
+                        circle{
+                            fill: #444;
+                            stroke: #666;
+                            stroke-width: 2px;
+                            &:nth-child(2){
+                                fill: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.light-style-preset{
+             .ele-dclock{
+                background: linear-gradient(#fafafa, #efefef);
+                border: 1px #ddd solid;
+                color: #222;
+                .cell-cont{
+                    svg{
+                        position: relative;
+                        &::before{
+                            content: '';
+                            width: 150px;
+                            height: 150px;
+                            background: #127fd6;
+                            position: absolute;
+                            top:0;
+                        }
+                        circle{
+                            //filter: blur(25px);
+                            fill: transparent;
+                            stroke: #dfdfdf;
+                            stroke-width: 2px;
+                            &:nth-child(2){
+                                fill: #fff;
+                                filter: blur(0px);
+                            }
+                        }
+                        border-radius: 50%;
+                        padding: 0;
+                        height: 150px;
+                        width: 150px;
+                        //box-shadow: 10px 0px 10px rgba($color: #000, $alpha: 0.2);
+                    }
+                }
+                .am-tag{
+                    position: absolute;
+                    top: 10px;
+                    right: 20px;
+                    font-size: 16px;
+                    color: #333;
+                }
+            }
+        }
+        .clock-title{
+            position: relative;
+            display: block;
+            text-align: center;
+            margin: 10px 0;
+            font-weight: 200;
+            color: var(--titleColor);
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            font-size: 20px;
+            width: 100%;
+            z-index: 10;
+        }
+        
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .ele-dclock{
+            display: flex;
+            background: var(--clockBackground);
+            gap: 40px;
+            color: var(--fontColor);
+            padding: 30px;
+            position: relative;
+            border-radius: 20px;
+            .cell-cont{
+                position: relative;
+                width: 150px;
+                height: 150px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                svg{
+                    position: relative;
+                    width: 150px;
+                    height: 150px;
+                    transform: rotate(270deg);
+                    circle{
+                        width: 100%;
+                        height: 100%;
+                        fill: var(--cellBackground);
+                        stroke: #191919;
+                        stroke-width: 3;
+                        transform: translate(5px, 5px);
+                        &:nth-child(2){
+                            
+                            stroke-dasharray: 440;
+                            transition: all .6s cubic-bezier(0.075, 0.82, 0.165, 1);
+                        }
+                        &.hh{
+                            
+                            &:nth-child(2){
+                                stroke: var(--hColor);
+                            }
+                        }
+                        &.mm{
+                           
+                            &:nth-child(2){
+                                stroke: var(--mColor);
+                            }
+                        }
+                        &.ss{
+                            
+                            &:nth-child(2){
+                                stroke: var(--sColor);
+                            }
+                        }
+                    }
+                }
+                .cell-data{
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    text-align: center;
+                    .cell{
+                        //font-size: 30px;
+                        font-weight: 200;
+                        position: relative;
+                    }
+                    .tag{
+                        position: relative;
+                        //font-size: 12px;
+                        text-transform: uppercase;
+                        font-weight: 200;
+                    }
+                }
+                .dot{
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 10;
+                    display: flex;
+                    justify-content: center;
+                    transition: transform .6s cubic-bezier(0.075, 0.82, 0.165, 1);
+                    &.hr_dot{
+                        &::before{
+                            background: var(--hColor);
+                            box-shadow: 0 0 20px var(--hColor), 0 0 40px var(--hColor);
+                        }
+                    }
+                    &.min_dot{
+                        &::before{
+                            background: var(--mColor);
+                            box-shadow: 0 0 20px var(--mColor), 0 0 40px var(--mColor);
+                        }
+                    }
+                    &.sec_dot{
+                        &::before{
+                            background: var(--sColor);
+                            box-shadow: 0 0 20px var(--sColor), 0 0 40px var(--sColor);
+                        }
+                    }
+                    &::before{
+                        content: '';
+                        position: absolute;
+                        top: 0px;
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 50%;
+                    }
+                }
+            }
+            div{
+                position: absolute;
+                text-align: center;
+            }
+            .am-tag{
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                //font-size: 16px;
+                color: var(--fontColor);
             }
         }
     }

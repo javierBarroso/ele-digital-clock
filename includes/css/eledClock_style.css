@@ -334,10 +334,6 @@
   font-weight: 200;
 }
 
-.ele-dclock-container .clock-02.dark-style-preset .am-tag {
-  font-size: 20px;
-}
-
 .ele-dclock-container .clock-02.dark-style-preset .dot {
   font-size: 60px;
 }
@@ -367,10 +363,6 @@
   font-weight: 200;
 }
 
-.ele-dclock-container .clock-02.light-style-preset .am-tag {
-  font-size: 20px;
-}
-
 .ele-dclock-container .clock-02.light-style-preset .dot {
   font-size: 60px;
 }
@@ -390,5 +382,262 @@
   border: rgba(255, 255, 255, 0.2) solid 1px;
   --fontColor: #202020;
   background: #f6f6f6;
+}
+
+.ele-dclock-container .clock-03 {
+  --clockBackground: #6978cd;
+  --cellBackground: #685cb5;
+  --hColor: rgb(255, 39, 89);
+  --mColor: rgb(255, 172, 39);
+  --sColor: rgb(183, 255, 39);
+  --cellSize: 150px;
+}
+
+.ele-dclock-container .clock-03.glass-style-preset .ele-dclock {
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  border: 1px #ffffff55 solid;
+}
+
+.ele-dclock-container .clock-03.glass-style-preset .ele-dclock .cell-cont svg circle {
+  fill: rgba(255, 255, 255, 0.1);
+  stroke: #ffffff19;
+  stroke-width: 2px;
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+}
+
+.ele-dclock-container .clock-03.glass-style-preset .ele-dclock .cell-cont svg circle:nth-child(2) {
+  fill: none;
+}
+
+.ele-dclock-container .clock-03.dark-style-preset .ele-dclock {
+  background: #222;
+  border: 1px #ffffff55 solid;
+}
+
+.ele-dclock-container .clock-03.dark-style-preset .ele-dclock .cell-cont svg circle {
+  fill: #444;
+  stroke: #666;
+  stroke-width: 2px;
+}
+
+.ele-dclock-container .clock-03.dark-style-preset .ele-dclock .cell-cont svg circle:nth-child(2) {
+  fill: none;
+}
+
+.ele-dclock-container .clock-03.light-style-preset .ele-dclock {
+  background: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#efefef));
+  background: linear-gradient(#fafafa, #efefef);
+  border: 1px #ddd solid;
+  color: #222;
+}
+
+.ele-dclock-container .clock-03.light-style-preset .ele-dclock .cell-cont svg {
+  position: relative;
+  border-radius: 50%;
+  padding: 0;
+  height: 150px;
+  width: 150px;
+}
+
+.ele-dclock-container .clock-03.light-style-preset .ele-dclock .cell-cont svg::before {
+  content: '';
+  width: 150px;
+  height: 150px;
+  background: #127fd6;
+  position: absolute;
+  top: 0;
+}
+
+.ele-dclock-container .clock-03.light-style-preset .ele-dclock .cell-cont svg circle {
+  fill: transparent;
+  stroke: #dfdfdf;
+  stroke-width: 2px;
+}
+
+.ele-dclock-container .clock-03.light-style-preset .ele-dclock .cell-cont svg circle:nth-child(2) {
+  fill: #fff;
+  -webkit-filter: blur(0px);
+          filter: blur(0px);
+}
+
+.ele-dclock-container .clock-03.light-style-preset .ele-dclock .am-tag {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 16px;
+  color: #333;
+}
+
+.ele-dclock-container .clock-03 .clock-title {
+  position: relative;
+  display: block;
+  text-align: center;
+  margin: 10px 0;
+  font-weight: 200;
+  color: var(--titleColor);
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  font-size: 20px;
+  width: 100%;
+  z-index: 10;
+}
+
+.ele-dclock-container .clock-03 * {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.ele-dclock-container .clock-03 .ele-dclock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: var(--clockBackground);
+  gap: 40px;
+  color: var(--fontColor);
+  padding: 30px;
+  position: relative;
+  border-radius: 20px;
+}
+
+.ele-dclock-container .clock-03 .ele-dclock .cell-cont {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ele-dclock-container .clock-03 .ele-dclock .cell-cont svg {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+
+.ele-dclock-container .clock-03 .ele-dclock .cell-cont svg circle {
+  width: 100%;
+  height: 100%;
+  fill: var(--cellBackground);
+  stroke: #191919;
+  stroke-width: 3;
+  -webkit-transform: translate(5px, 5px);
+          transform: translate(5px, 5px);
+}
+
+.ele-dclock-container .clock-03 .ele-dclock .cell-cont svg circle:nth-child(2) {
+  stroke-dasharray: 440;
+  -webkit-transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.ele-dclock-container .clock-03 .ele-dclock .cell-cont svg circle.hh:nth-child(2) {
+  stroke: var(--hColor);
+}
+
+.ele-dclock-container .clock-03 .ele-dclock .cell-cont svg circle.mm:nth-child(2) {
+  stroke: var(--mColor);
+}
+
+.ele-dclock-container .clock-03 .ele-dclock .cell-cont svg circle.ss:nth-child(2) {
+  stroke: var(--sColor);
+}
+
+.ele-dclock-container .clock-03 .ele-dclock .cell-cont .cell-data {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.ele-dclock-container .clock-03 .ele-dclock .cell-cont .cell-data .cell {
+  font-weight: 200;
+  position: relative;
+}
+
+.ele-dclock-container .clock-03 .ele-dclock .cell-cont .cell-data .tag {
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 200;
+}
+
+.ele-dclock-container .clock-03 .ele-dclock .cell-cont .dot {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: -webkit-transform 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: transform 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: transform 0.6s cubic-bezier(0.075, 0.82, 0.165, 1), -webkit-transform 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.ele-dclock-container .clock-03 .ele-dclock .cell-cont .dot.hr_dot::before {
+  background: var(--hColor);
+  -webkit-box-shadow: 0 0 20px var(--hColor), 0 0 40px var(--hColor);
+          box-shadow: 0 0 20px var(--hColor), 0 0 40px var(--hColor);
+}
+
+.ele-dclock-container .clock-03 .ele-dclock .cell-cont .dot.min_dot::before {
+  background: var(--mColor);
+  -webkit-box-shadow: 0 0 20px var(--mColor), 0 0 40px var(--mColor);
+          box-shadow: 0 0 20px var(--mColor), 0 0 40px var(--mColor);
+}
+
+.ele-dclock-container .clock-03 .ele-dclock .cell-cont .dot.sec_dot::before {
+  background: var(--sColor);
+  -webkit-box-shadow: 0 0 20px var(--sColor), 0 0 40px var(--sColor);
+          box-shadow: 0 0 20px var(--sColor), 0 0 40px var(--sColor);
+}
+
+.ele-dclock-container .clock-03 .ele-dclock .cell-cont .dot::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.ele-dclock-container .clock-03 .ele-dclock div {
+  position: absolute;
+  text-align: center;
+}
+
+.ele-dclock-container .clock-03 .ele-dclock .am-tag {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: var(--fontColor);
 }
 /*# sourceMappingURL=eledClock_style.css.map */

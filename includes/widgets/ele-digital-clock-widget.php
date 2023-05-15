@@ -76,7 +76,43 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                     'options' => [
                         'default'  => esc_html__('Clock 01', 'ele-digital-clock'),
                         'clock-02' => esc_html__('Clock 02', 'ele-digital-clock'),
+                        'clock-03' => esc_html__('Clock 03', 'ele-digital-clock'),
                     ],
+                ]
+            );
+            $this->add_control(
+                'hour_format',
+                [
+                    'label' => esc_html__('Hour format', 'ele-digital-clock'),
+                    'type' => \Elementor\Controls_Manager::SELECT,
+                    'default' => 'default',
+                    'options' => [
+                        'default'  => esc_html__('12 hours', 'ele-digital-clock'),
+                        '24' => esc_html__('24 hours', 'ele-digital-clock'),
+                    ],
+                ]
+            );
+            $timeZoneData = timezone_abbreviations_list();
+            $timeZone = [];
+
+            foreach ($timeZoneData as $key => $zone) {
+                foreach ($zone as $key => $time) {
+                    if($time['timezone_id']){
+                        $timeZone[$time['timezone_id']] = $time['timezone_id'];
+                    }
+                }
+            }
+
+            ksort($timeZone);
+            
+
+            $this->add_control(
+                'clock_time_zone',
+                [
+                    'label' => esc_html__('Time zone', 'ele-digital-clock'),
+                    'type' => \Elementor\Controls_Manager::SELECT,
+                    'default' => 'default',
+                    'options' => $timeZone,
                 ]
             );
 
@@ -215,7 +251,7 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                         'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                     ],
                     'condition' => [
-                        'clock_type' => ['default', 'clock-02'],
+                        'clock_type' => ['default', 'clock-02', 'clock-03'],
                     ],
                     'selector' => '{{WRAPPER}} .clock-title',
                     'fields_options' => [
@@ -255,7 +291,7 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                     ],
                     'selector' => '{{WRAPPER}} .cell-cont .cell, {{WRAPPER}} .dot',
                     'condition' => [
-                        'clock_type' => ['default', 'clock-02'],
+                        'clock_type' => ['default', 'clock-02', 'clock-03'],
                     ],
                     'fields_options' => [
                         'typography' => ['default' => 'yes'],
@@ -277,7 +313,7 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                     'selector' => '{{WRAPPER}} .cell-cont .tag',
                     'separator' => 'before',
                     'condition' => [
-                        'clock_type' => ['default', 'clock-02'],
+                        'clock_type' => ['default', 'clock-02', 'clock-03'],
                     ],
                     'fields_options' => [
                         'typography' => ['default' => 'yes'],
@@ -306,7 +342,7 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                     'size_units' => ['px'],
                     'range' => ['px' => ['min' => 5, 'max' => 900]],
                     'condition' => [
-                        'clock_type' => ['default', 'clock-02'],
+                        'clock_type' => ['default', 'clock-02', 'clock-03'],
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .cell-cont' => 'width:{{SIZE}}{{UNIT}}',
@@ -321,7 +357,7 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                     'size_units' => ['px'],
                     'range' => ['px' => ['min' => 0, 'max' => 100]],
                     'condition' => [
-                        'clock_type' => ['default', 'clock-02'],
+                        'clock_type' => ['default', 'clock-02', 'clock-03'],
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .cell-cont .cell' => 'padding:{{SIZE}}{{UNIT}} 0',
@@ -518,6 +554,10 @@ if (!class_exists('Eledc_Digital_Clock_Widget')) {
                 case 'clock-02':
 
                     include ELE_DIGITAL_CLOCK_PATH . 'includes/templates/template-digital-clock_02.php';
+                    break;
+                case 'clock-03':
+
+                    include ELE_DIGITAL_CLOCK_PATH . 'includes/templates/template-digital-clock_03.php';
                     break;
 
                 default:

@@ -11,20 +11,21 @@
             case 'dark':
                 $style_preset = 'dark-style-preset';
                 break;
-            
         }
-
     }
 ?>
 
+<script>
+    set_timezone('<?= $settings['clock_time_zone'] ?>')
+</script>
 
 <section class="ele-dclock-container">
     <div class="ele-dclock <?= esc_attr( $style_preset ) ?>" id="card">
         <h2 class="clock-title"><?= esc_html($settings['head-text']) ?></h2>
         <div class="time">
             <div class="cell-cont hcont">
-                <div class="cell hour">00</div>
-                <span class="am-tag">PM</span>
+                <div class="cell hour" data-h="<?= esc_attr( $settings['hour_format'] ) ?>">00</div>
+                <span class="am-tag" style="display:<?= esc_attr( $settings['hour_format'] == 24 ? 'none' : 'block' ) ?>">PM</span>
                 <div class="tag htag"><?= esc_html($settings['hour-text']) ?></div>
             </div>
             <div class="cell-cont mcont">

@@ -10,9 +10,9 @@ function set_timezone(zone){
 
 function ele_digital_clock(){
 
-    let hours = document.querySelectorAll('.hour');
-    let minutes = document.querySelectorAll('.minute');
-    let seconds = document.querySelectorAll('.second');
+    let hours = document.querySelectorAll('.cell.hour');
+    let minutes = document.querySelectorAll('.cell.minute');
+    let seconds = document.querySelectorAll('.cell.second');
     let am_tags = document.querySelectorAll('.am-tag');
     let hourCircle = document.querySelectorAll('.hh');
     let minuteCircle = document.querySelectorAll('.mm');

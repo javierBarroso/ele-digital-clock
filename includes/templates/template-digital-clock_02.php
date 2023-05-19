@@ -19,7 +19,9 @@
 ?>
 
 
-<script>set_timezone('<?= esc_html($settings['clock_time_zone']) ?>')</script>
+<script>
+    set_timezone('<?= esc_html($settings['clock_time_zone']) ?>')
+</script>
 <section class="ele-dclock-container">
     <div class="clock-02 <?= esc_attr( $style_preset ) ?>">
         <h2 class="clock-title"><?= esc_html($settings['head-text']) ?></h2>
